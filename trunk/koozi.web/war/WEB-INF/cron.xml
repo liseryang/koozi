@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cronentries>
+  <cron>
+    <url>/rest/products</url>
+    <description>Hit the site every two minutes</description>
+    <schedule>every 3 minutes</schedule>
+  </cron>
+</cronentries>

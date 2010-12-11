@@ -1,0 +1,51 @@
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+        "http://www.w3.org/TR/html4/loose.dtd"> 
+<html lang="en"> 
+<head> 
+	<meta http-equiv="content-type" content="text/html; charset=iso-8859-1"> 
+	<title>Floatutorial: Tutorial 9 - Step 15</title> 
+	<link rel="SHORTCUT ICON" href="/floatutorial/floatutorial.ico"> 
+	<link rel="stylesheet" href="../stylesheets/print.css" media="print"> 
+	<link rel="stylesheet" href="/static/admin/css/admin.css"> 
+	${head}
+</head> 
+<body> 
+<div id="header"> 
+			<h1>Welcome
+				<#if authentication?? && authentication.principal??> 
+						, ${authentication.principal.forename} ${authentication.principal.surname}!
+				</#if>
+			</h1>
+</div> 
+<ul id="nav"> 
+	<#include "/admin/top.dec"/>
+</ul>
+<ul id="nav2"> 
+	<#include "/admin/breadcrumps.dec"/>
+</ul> 
+<!--<div id="contentblock"></div> -->
+<div id="container"> 
+	<!--<div id="top"> 
+		test
+	</div> -->
+	<div id="leftnav"> 
+		<#include "/admin/left.dec"/>
+	</div> 
+	<div id="rightnav"> 
+		<#include "/admin/aside.dec"/>
+	</div> 
+	<div id="content"> 
+		${body}
+	</div> 
+	<div id="footer"> 
+		<address> 
+			Tola2000@gmail.com
+		</address> 
+	</div> 
+</div> 
+
+
+</div> 
+</body> 
+</html> 

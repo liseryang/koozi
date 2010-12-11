@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<decorators defaultdir="/WEB-INF/templates">
+	<excludes>
+		<pattern>*.jsp</pattern>
+		<pattern>/index.html</pattern>
+	</excludes>
+	<decorator name="admin" page="/decorator/admin/main.dec">
+		<pattern>/admin</pattern>
+	</decorator>
+	<decorator name="shop" page="/decorator/shop/main.dec">
+		<pattern>/shop</pattern>
+	</decorator>
+	<decorator name="openAPI" page="/decorator/openAPI/main.dec">
+		<pattern>/openAPI</pattern>
+	</decorator><!--
+	<decorator name="rest" page="/decorator/rest/main.dec">
+		<pattern>/rest</pattern>
+	</decorator>
+	--><decorator name="printable" page="/printable.dec" />
+</decorators>
