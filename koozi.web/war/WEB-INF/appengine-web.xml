@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<appengine-web-app xmlns="http://appengine.google.com/ns/1.0">
+	<application>tola2000</application>
+	<version>4</version>
+	<precompilation-enabled>true</precompilation-enabled>
+	<sessions-enabled>true</sessions-enabled>
+	<!-- Configure java.util.logging -->
+	<system-properties>
+		<property name="java.util.logging.config.file" value="WEB-INF/logging.properties" />
+	</system-properties>
+	<public-root>"/static"</public-root>
+	
+	<static-files>
+		<include path="/favicon.ico" expiration="1d" />
+		<include path="/static/**" />
+		<include path="/**.css" />
+	</static-files>
+</appengine-web-app>

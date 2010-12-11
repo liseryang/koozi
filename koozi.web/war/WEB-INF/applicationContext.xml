@@ -1,0 +1,201 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:b="http://www.springframework.org/schema/beans" xmlns:context="http://www.springframework.org/schema/context" xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:oxm="http://www.springframework.org/schema/oxm" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	                       	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+				       	 	http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.1.xsd
+				       	 	                http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+				       	 	                  http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-3.0.xsd
+				       	 	                  http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.0.xsd">
+
+	<!--<import resource="/WEB-INF/applicationContext-security.xml"/>
+-->
+
+
+	<security:global-method-security jsr250-annotations="enabled" />
+	<!-- Enables JSR-303 --><!--
+
+    <bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+
+
+  <mvc:annotation-driven />
+
+  -->
+
+	<tx:annotation-driven transaction-manager="myTransactionManager" />
+
+	<bean id="myTransactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	<bean id="jpaTemplate" class="org.springframework.orm.jpa.JpaTemplate">
+		<property name="entityManagerFactory" ref="entityManagerFactory" />
+	</bean>
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalEntityManagerFactoryBean">
+		<property name="persistenceUnitName" value="transactions-optional" />
+	</bean>
+
+
+
+	<context:annotation-config />
+	<context:component-scan base-package="be.koozi" />
+	<context:component-scan base-package="be.koozi.product" />
+	<context:component-scan base-package="be.koozi.users" />
+	<context:component-scan base-package="be.koozi.sms" />
+
+	<bean class="org.springframework.orm.jdo.LocalPersistenceManagerFactoryBean">
+		<!-- The name of the PMF is in META-INF/jdoconfig.xml -->
+		<property name="persistenceManagerFactoryName" value="transactions-optional" />
+	</bean>
+
+	<bean class="be.koozi.gae.cache.CacheHolderFactoryBean">
+		<qualifier value="userCacheHolder" />
+	</bean>
+
+	<bean class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
+		<property name="order" value="1" />
+		<property name="defaultContentType" value="text/html" />
+		<property name="mediaTypes">
+			<map>
+
+				<entry key="html" value="text/html" />
+				<entry key="json" value="application/json" />
+				<entry key="xml" value="application/xml" />
+			</map>
+		</property>
+		<property name="viewResolvers">
+			<list>
+				<bean class="be.koozi.tools.CustomFreeMarkerViewResolver">
+					<property name="cache" value="true" />
+					<property name="prefix" value="/" />
+					<property name="suffix" value=".ftl" />
+					 <property name="exposeSpringMacroHelpers" value="true"/>
+					<property name="requestContextAttribute" value="rc" />
+					 
+				</bean>
+				<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+					<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+					<property name="prefix" value="/WEB-INF/jsp/" />
+					<property name="suffix" value=".jsp" />
+				</bean>
+			</list>
+		</property>
+		<property name="defaultViews">
+			<list>
+				<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView"><!--
+					<property name="prefixJson" value="true" />
+				-->
+				</bean>
+				<bean class="org.springframework.web.servlet.view.xml.MarshallingView">
+					<property name="marshaller">
+						<bean id="jaxb2Marshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+
+							<property name="contextPath" value="be.koozi.users" />
+						</bean>
+					</property>
+
+					<property name="modelKey" value="rootElement" />
+
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+		<property name="basename" value="classpath:messages" />
+		<property name="defaultEncoding" value="UTF-8" />
+		<property name="CacheSeconds" value="5" />
+	</bean>
+
+	<bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+		<property name="paramName" value="lang" />
+	</bean>
+	
+	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
+		<property name="defaultLocale" value="en" />
+	</bean>
+
+	<bean id="handlerMapping" class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
+		<property name="interceptors">
+			<list><!--
+				<bean class="be.koozi.gae.security.GaeAuthenticationInterceptor">
+					<property name="authenticationManager" ref="authenticationManager" />
+				</bean>
+				-->
+				<ref bean="localeChangeInterceptor" />
+				<bean class="be.koozi.tools.ViewInterceptor"/>
+				<bean class="be.koozi.tools.BaseInterceptor"/>
+			</list>
+		</property>
+	</bean>
+
+
+
+	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
+
+	<bean class="com.google.appengine.api.images.ImagesServiceFactory" factory-method="getImagesService" />
+
+	<bean class="be.koozi.sms.SMSServiceOrangeImpl" />
+
+	<bean class="com.google.appengine.api.users.UserServiceFactory" factory-method="getUserService" />
+
+	<!--
+		This bean resolves specific types of exception to corresponding error views.
+		The default behaviour of DispatcherServlet is to propagate all exceptions to the
+		servlet container: This will happen here with all other types of exception.
+	-->
+	<!--
+		<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver"> <property name="exceptionMappings"> <props> <prop key="org.springframework.dao.DataAccessException">errorDataAccess</prop> <prop
+		key="org.springframework.transaction.TransactionException">errorDataAccess</prop> </props> </property> </bean>
+	-->
+	<security:http pattern="/static/**" security="none" />
+	<security:http pattern="/favicon.ico" security="none" />
+	<security:http pattern="/_ah/**" security="none" />
+	<security:http pattern="/disabled.htm" security="none" />
+	<security:http pattern="/users/logout" security="none" />
+	<security:http pattern="/home.html" security="none" />
+	<security:http pattern="*.dec" security="none" />
+
+	<security:http entry-point-ref="gaeEntryPoint" auto-config="true">
+
+		<security:custom-filter ref="gaeFilter" position="PRE_AUTH_FILTER" />
+	</security:http>
+
+	<bean id="gaeEntryPoint" class="be.koozi.gae.security.GoogleAccountsAuthenticationEntryPoint" />
+	<bean id="gaeFilter" class="be.koozi.gae.security.GaeAuthenticationFilter">
+		<property name="authenticationManager" ref="authenticationManager" />
+	</bean>
+
+	<security:authentication-manager alias="authenticationManager">
+		<security:authentication-provider ref="gaeAuthenticationProvider" />
+	</security:authentication-manager>
+
+	<bean id="gaeAuthenticationProvider" class="be.koozi.gae.security.GoogleAccountsAuthenticationProvider"/>
+
+	<!--
+		This bean provides explicit View mappings in a resource bundle instead of the default InternalResourceViewResolver. It fetches the view mappings from localized "views_xx" classpath files, i.e. "/WEB-INF/classes/views.properties" or "/WEB-INF/classes/views_de.properties". Symbolic view names
+		returned by Controllers will be resolved by this bean using the respective properties file, which defines arbitrary mappings between view names and resources.
+	-->
+
+
+
+
+	<bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+		<property name="templateLoaderPath" value="/WEB-INF/templates/" />
+		<property name="freemarkerVariables">
+			<map>
+				<entry key="xml_escape">
+					<bean class="freemarker.template.utility.XmlEscape"></bean>
+				</entry>
+				<entry key="authentication">
+					<bean class="be.koozi.gae.security.AuthenticatedUserDetails" />
+				</entry>
+			</map>
+		</property>
+		<property name="freemarkerSettings">
+			<props>
+				<prop key="datetime_format">dd.MM.yyyy</prop>
+			</props>
+		</property>
+	</bean>
+</beans>

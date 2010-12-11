@@ -1,0 +1,36 @@
+<div class="unit size1of3">
+	<h3><a class="utopia" href="/openAPI/sms/new" >SMS</a></h3>
+	<div class="clr"></div>
+	<ul class="arrowed">
+		<li><a href="/openAPI/sms/new" >Test SMS online.</a></li>
+		<li><a href="/openAPI/sms/currentUser" >Mijn SMS historiek.</a></li>
+		<li><a href="http://www.belgacom.be/companies/nl/jsp/dynamic/productCategory.jsp?dcrName=hbs_com_share&WT.ac=HP_links_sharepoint_fr_bus_click" >Documenten delen</a></li>
+		<li><a href="http://www.belgacom.be/companies/nl/jsp/dynamic/productCategory.jsp?dcrName=hbs_sec_bckup&WT.ac=HP_links_backup_fr_bus_click" >Uw gegevens beveiligen</a></li>
+		<li><a href="http://www.belgacom.be/companies/nl/jsp/dynamic/productCategory.jsp?dcrName=hbs_datacent_its&WT.ac=HP_links_telefoonuitbesteden_nl_bus_click" >Besteed uw  telefonie uit</a></li>
+		<li><a href="http://www.belgacom.be/companies/nl/jsp/dynamic/productCategory.jsp?dcrName=hbs_com_videoconf&WT.ac=HP_links_teleconference_nl_bus_click" >Vergaderen zonder u te verplaatsen</a></li>
+	</ul>
+</div>
+<div class="unit size1of3">
+	<h3><a class="utopia" href="http://www.belgacom.be/companies/nl/jsp/dynamic/productCategory.jsp?dcrName=internet_network&WT.ac=HP_links_internetnetwork_nl_bus_click" >Ping ping</a></h3>
+	<div class="clr"></div>
+	<ul class="arrowed">
+		<li><a href="http://www.belgacom.be/companies/nl/jsp/dynamic/productCategory.jsp?dcrName=internet_office" >Blijf gegarandeerd aan de slag, wat er ook gebeurt</a></li>
+		<li><a href="http://www.belgacom.be/companies/nl/jsp/dynamic/productCategory.jsp?dcrName=internet_office&WT.ac=HP_links_internetoffice_nl_bus_click" >Een internetabonnement kiezen</a></li>
+		<li><a href="http://www.belgacom.be/companies/nl/jsp/dynamic/productCategory.jsp?dcrName=internet_on_move&WT.ac=HP_links_internetonmove_nl_bus_click" >Gebruik internet onderweg</a></li>
+		<li><a href="http://www.belgacom.be/companies/nl/jsp/dynamic/productCategory.jsp?dcrName=extra_volume&WT.ac=HP_links_extravolume_nl_bus_click" >Extra volume voor uw internetverbinding</a></li>
+		<li><a href="http://www.belgacom.be/companies/nl/jsp/dynamic/productCategory.jsp?dcrName=internet_ife&WT.ac=HP_links_internetvoorwerknemers_nl_bus_click" >Motiveer uw werknemers, geef ze internet!</a></li>
+		<li><a href="http://www.belgacom.be/companies/nl/jsp/dynamic/productCategory.jsp?dcrName=schools&detailPage=cds_i_line_schools&WT.ac=HP_links_school_fr_bus_click" >Internet voor scholen</a></li>
+	</ul>
+</div>
+<div class="unit size1of3 lastUnit">
+	<h3><a class="utopia" href="" >Location based services</a></h3>
+	<div class="clr"></div>
+	<ul class="arrowed">
+		<li><a href="http://www.belgacom.be/companies/nl/jsp/dynamic/productCategory.jsp?dcrName=tariffs_complete&WT.ac=HP_links_tariffs_nl_bus_click" >Een tariefplan kiezen volgens uw behoeften</a></li>
+		<li><a href="http://www.belgacom.be/companies/nl/jsp/dynamic/productCategory.jsp?dcrName=lines_pstn_b&WT.ac=HP_links_pstn_nl_bus_click" >Een vaste lijn kiezen</a></li>
+		<li><a href="http://www.belgacom.be/companies/nl/jsp/dynamic/productCategory.jsp?dcrName=cordless_b&WT.ac=HP_links_cordless_nl_bus_click" >Online telefoons kopen</a></li>
+		<li><a href="http://www.belgacom.be/companies/nl/jsp/dynamic/product.jsp?dcrName=hbs_bizz_on_voice&WT.ac=HP_links_bizzonevoice_nl_bus_click" >Uw vaste en mobiele telefonie op één factuur</a></li>
+		<li><a href="http://www.belgacom.be/companies/nl/jsp/dynamic/productCategory.jsp?dcrName=pabx_b&WT.ac=HP_links_proteledesk_nl_bus_click" >Nood aan een professionele telefonisch onthaal voor uw klanten?</a></li>
+		<li><a href="http://www.belgacom.be/companies/nl/jsp/dynamic/productCategory.jsp?dcrName=vms&WT.ac=HP_links_oproepdoorschakelen_nl_bus_click" >Oproepen doorschakelen?</a></li>
+	</ul>
+</div>

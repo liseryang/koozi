@@ -1,0 +1,32 @@
+<table width="100%" cellspacing="0" cellpadding="0" border="0">
+	<tr>
+		<td rowspan="3">
+			<a href="/openAPI/products">Products</a>
+		</td>
+		<td rowspan="3">
+			<a href="/openAPI/users">Users management</a>
+		</td>
+		<td rowspan="3">
+			<a href="/openAPI/sms/new">Send sms</a>
+		</td>		
+		<td rowspan="3">
+			<a href="/companies/nl/jsp/dynamic/productCategory.jsp?dcrName=packs_and_promos">Bizz Packs</a>
+		</td>
+		<td rowspan="3">
+			<a href="/companies/nl/jsp/dynamic/productCategory.jsp?dcrName=promos&WT.svl=tlc_nl_%20promos">Promoties</a>
+		</td>
+		<td rowspan="3">
+			<a href="/companies/nl/jsp/dynamic/productCategory.jsp?dcrName=eservices_b">e-Services</a>
+		</td>
+		<td class="lastItem" rowspan="3">
+			<a href="http://support.nl.belgacom.be/app/answers/list/p/975">Help</a>
+		</td>
+		
+		<#if authentication?? && authentication.principal??>
+		<td rowspan="3">
+			<a href="/openAPI/users/logout">Logout</a>
+			</td>
+		</#if>
+
+	</tr>
+</table>

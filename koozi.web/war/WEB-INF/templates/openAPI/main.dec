@@ -1,0 +1,592 @@
+<!DOCTYPE html UBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<title>openAPI</title>
+	<link rel="stylesheet" href="../../static/openAPI/css/custom.css" type="text/css" media="screen" charset="utf-8" />
+	<link rel="stylesheet" href="http://www.belgacom.be/companies/gallery/design/homepage2009/css/default.css" type="text/css" media="screen" charset="utf-8" />
+</head>
+
+<body class="home">
+<div id="container">
+<div id="topBar_component">
+	<div id="topBar_container">
+		<div class="tb_left">
+			<ul id="topBar_sitesList" class="tb_sites">
+			</ul>
+		</div>
+
+		<div class="tb_right">
+			<ul id="topBar_rightMisc" class="tb_misc">
+				<li><a href="http://www.belgacom.be/companies/nl/jsp/dynamic/unstructuredTextFull.jsp?dcrName=contact&WT.ac=HP_Topbar_contact_nl_bus_click">Contact</a></li>
+			</ul>
+			<ul id="topBar_rightMisc" class="tb_misc">
+				<li><a href="sitemap.jsp?WT.ac=HomePage_Sitemap_NL_Bus_click">Sitemap</a></li>
+			</ul>
+
+			<!-- Language selection -->
+
+			<ul id="topBar_languages" class="tb_lang">
+					<li >
+						<a href="#self?lan=nl" >nl</a>
+					</li>
+					<li >
+						<a href="#self?lan=fr" >fr</a>
+					</li>
+					<li >
+						<a href="#self?lan=en" >en</a>
+					</li>
+			</ul>
+		</div>
+		<div class="tb_clr"></div>
+	</div>
+</div>
+<div class="page">
+<div class="head">
+			<a href="/companies/nl/jsp/dynamic/homepage.jsp">
+				<img src="http://www.belgacom.be/companies/gallery/design/homepage2009/images/bgc_logo.gif" class="logo" alt="Belgacom" />
+			</a>
+
+			<h1 class="bigTitlePrincipalCompany"><a href="/companies/nl/jsp/dynamic/homepage.jsp">Belgacom open API portal</span></a></h1>
+	<div class="searchField">
+
+		<span class="sf_wrapper">
+
+			<form name="searchHeaderForm" id="searchHeaderForm" method="get" action="" onsubmit="javascript:headerSearch();">
+
+				<input type="hidden" value="" name="search"/>
+
+				<input type="text" class="sf_input" value="Zoeken" onclick="this.value='';" name="q"/>
+
+				<a href="#" class="sf_submitLink submit" id="searchHeaderBtn">
+
+					<img src="../../../gallery/design/homepage2009/images/spacer.gif" alt="Zoeken" />
+
+				</a>
+
+			</form>
+
+		</span>
+
+	</div>
+	<ul class="assocSites">
+
+		<li><a href="http://www.belgacom.be/private/nl/jsp/dynamic/homepage.jsp" title="Privé">Privé</a></li>
+
+		<li class="current"><a href="/companies/nl/jsp/dynamic/homepage.jsp" title="Van 0 tot 250 werknemers">Zelfstandigen en kmo's </a></li>
+
+		<li><a href="http://ict.belgacom.be/nl/homepage.asp" title="Vanaf 250 werknemers">Grote bedrijven</a></li>
+
+	</ul>
+<!-- topNavigation.jsp -->
+	<div class="mainMenu">
+		<table width="100%" cellspacing="0" cellpadding="0" border="0">
+			<tbody>
+				<tr>
+					<td class="topLeft"></td>
+
+					<td rowspan="2">
+						<#include "/openAPI/top.dec"/>
+					</td>
+
+					<td class="topRight"></td>
+
+				</tr>
+
+				<tr>
+
+					<td class="bottomLeft"></td>
+
+					<td class="bottomRight"></td>
+
+				</tr>
+
+			</tbody>
+
+		</table>
+
+		
+
+	</div>
+
+	
+
+
+
+
+
+</div>
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Body -->
+
+<div class="body">
+
+	<div class="rightCol">
+
+	    
+
+
+
+
+
+
+
+<!-- shoppingBasket -->
+
+
+
+<div class="headerBox box lightGrey">
+
+	<div class="leftBottom">
+
+		<div class="rightBottom">
+
+			<div class="head darkGrey head-darkGrey">
+
+				<div class="leftTop">
+
+					<h2 class="rightTop">
+			Welcome 
+		
+					</h2>
+
+				</div>
+
+			</div>
+
+			<div class="content">
+				<p>
+						<#if !authentication?? || !authentication.principal??>
+									Please login.
+						</#if>
+				
+						<#if authentication?? && authentication.principal??> 
+								<a href="/openAPI/users/currentuser">${authentication.principal.forename} ${authentication.principal.surname}</a>
+						</#if>
+				</p>			
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- customerZone.jsp -->
+
+
+
+
+
+
+
+
+<div class="headerBox box lightGrey">
+
+	<div class="leftBottom">
+
+		<div class="rightBottom">
+
+			<div class="head darkGrey head-darkGrey">
+
+				<div class="leftTop">
+
+					<h2 class="rightTop">
+
+						
+
+							
+
+							
+
+								
+
+							
+
+						
+
+						
+
+							Help
+
+						
+
+					</h2>
+
+				</div>
+
+			</div>
+
+			<div class="content">
+
+			<!-- Box content -->
+
+				<ul class="arrowed noSubtitle">
+
+	
+
+						<li><a href="http://www.belgacom.be/home/nl/jsp/static/bizzcorner.jsp?WT.ac=HP_links_BizzCorner_nl_bus_click">Bizz Corner</a></li>						
+
+					
+
+						<li><a href="http://www.belgacom.be/companies/nl/jsp/dynamic/unstructuredTextFull.jsp?dcrName=contact&WT.ac=HP_linkhelp_contact_nl_bus_click">Contact</a></li>						
+
+					
+
+						<li><a href="http://www.belgacom.be/companies/nl/jsp/dynamic/minisite.jsp?path=templatedata/site/MiniSite/data/win_back&page=templatedata/site/MiniSitePage/data/win_back_intro&WT.ac=HP_linkhelp_winback_nl_bus_click">Van operator veranderen en voor Belgacom kiezen</a></li>						
+
+					
+
+						<li><a href="http://support.nl.belgacom.be/app/answers/list/p/598,601,607">Uw Outlook configureren</a></li>						
+
+					
+
+						<li><a href="http://support.nl.belgacom.be/app/answers/list/p/598,600,605">Uw draadloze verbinding beveiligen</a></li>						
+
+					
+
+				</ul>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+
+
+		
+
+
+
+
+
+
+
+
+
+
+
+<!-- stayInformedBox -->
+
+
+
+
+
+
+
+	
+
+		<div class="headerBox box lightGrey">
+
+		  <div class="leftBottom">
+
+				<div class="rightBottom">
+
+					<div class="head darkGrey head-darkGrey">
+
+						<div class="leftTop">
+
+							<h2 class="rightTop">
+
+								<!-- Box Title -->
+
+								Belgacom en u
+
+							</h2>
+
+						</div>
+
+					</div>
+
+					<!-- Box content -->
+
+					<div class="content">
+
+					
+
+						<!-- Subscription -->
+
+						
+
+							<h3>Inschrijven op onze newsletter</h3>
+
+							<div id="emailSubscriptionDiv">
+
+								<form name="emailSubscription" method="post" action="">
+
+							    	<fieldset>
+
+							      		<span class="text">
+
+							      			<input class="fix_ie8" type="text" name="email" id="email" value="Uw e-mailadres" class="text-input" onfocus="this.value=''" />
+
+							      		</span>
+
+							      		<a href="#" class="btn btn_type_1" id="newsletter_btn"><span>ok</span></a>
+
+							      		<input type="hidden" name="url" id="url" value="subscribeNewsletter.jsp"/>
+
+							      		<input type="hidden" name="brand" id="brand" value="BGC"/>
+
+							      		<input type="hidden" name="segment" id="segment" value="SME"/>
+
+							      		<input type="hidden" name="language" id="language" value="nl"/>
+
+							      		<input type="hidden" name="interaction" id="interaction" value="25/11/2010 11:48:08"/>
+
+							      		<!-- a href="#" class="button" onClick="javascript:document.emailSubscription.submit();"><span>ok</span></a-->
+
+							      		<!-- div class="btnContainer">
+
+											<input type="submit" value="ok" name="newsletter_btn" id="newsletter_btn" class="btn btn_type_1 submit"/>
+
+										</div-->
+
+							    	</fieldset>
+
+							  	</form>
+
+							</div>
+
+						  	<div id="result">
+
+						  		<div id="result_success" style="display:none">Dank u voor uw interesse. Wij sturen u een e-mail waarmee u uw inschrijving kunt bevestigen.</div>
+
+						  		<div id="result_error" style="display:none">Dank u voor uw interesse in onze nieuwsbrieven. Er heeft zich jammer genoeg een fout voorgedaan bij de verwerking van uw aanvraag. Mogen wij u vragen uw e-mailadres opnieuw in te voeren?</div>
+
+						  	</div>
+
+							
+
+							<script src="../../../gallery/design/homepage2009/scripts/sendNewsletterSubscription.js"></script>
+
+						
+
+						
+
+						<!-- RSS -->
+
+						
+
+						
+
+						<!-- Stay informed -->
+
+						
+
+						<div class="separator"></div>
+
+							<h3>Uw mening delen</h3>
+
+							<ul class="arrowed noSubtitle">
+
+								
+
+									<li><a href="http://www.belgacom.be/companies/nl/jsp/dynamic/unstructuredTextFull.jsp?dcrName=blog_version1" >Blogs</a></li>
+
+								
+
+							</ul>
+
+						
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	
+
+
+
+	</div>
+
+	
+
+	<div class="main">		
+
+		<div class="unit size2of3">
+
+ <div class="box lightBlue marginright14 newsbox">
+
+                <div class="leftBottom">
+
+                    <div class="rightBottom">
+
+                        <div class="leftTop">
+
+                            <div class="rightTop">
+
+                                <div class="openAPIBody content">
+                                    ${body}
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+		</div>
+
+        <div class="unit size1of3 lastUnit">
+
+        	<div class="box lightBlue marginright14 newsbox">
+
+                <div class="leftBottom">
+
+                    <div class="rightBottom">
+
+                        <div class="leftTop">
+
+                            <div class="rightTop">
+
+                                <div class="content">
+ 									<#include "/admin/aside.dec"/>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        
+
+        <div class="clr"></div>
+
+		
+
+	
+
+		
+
+        <div class="clr"></div>
+
+                 
+
+       	<div class="separator marginright14 dark-separator separator-marginright14"></div>
+
+                 
+
+        <div class="quicklinks">
+			<#include "/openAPI/bottom.dec"/>
+		</div>        
+
+	</div>
+
+
+
+</div>
+
+
+
+	</div>
+
+	
+ 
+ 
+
+
+<!-- footerDisplay --> 
+
+<div class="foot">
+	<div class="page">
+	<map name="togetherWith_map" id="togetherWith_map"> 
+	<area shape="rect" coords="58,9,101,38" href="http://www.telindus.com/" title="Telindus" alt="Telindus" /> 
+	<area shape="rect" coords="8,9,51,38" href="http://www.proximus.be/" title="Proximus" alt="Proximus" /> 
+</map> 
+<img class="togetherWith" src="http://www.belgacom.be/companies/gallery/design/homepage2009/images/together_with.gif" alt="Together With Proximus And Telindus" usemap="#togetherWith_map" /> 
+<div class="infos"> 
+	Alle rechten voorbehouden, Belgacom 2010.
+	  <ul> 
+		<li><a href="http://www.belgacom.com/group/7/mentions_leg/nl/mentions_legales.html">Wettelijke vermeldingen</a> | </li> 
+		<li><a href="http://www.belgacom.be/home/gallery/content/e-services/conditions/nl/privacy.pdf">Privacy policy</a> | </li> 
+		<li><a href="http://www.belgacom.com/group/7/contact_groupe/nl/contact.html">Bedrijfsgegevens</a></li> 
+	</ul> 
+	<br/> 
+	Deze website is gecreëerd en wordt beheerd conform het Belgisch recht.<br /> 
+	Koning Albert II-laan 27 - B-1030 Brussel.  
+</div> 
+<div class="partnersSites"><br /> 
+  <ul> 
+		<li><a href="http://www.belgacomwholesale.be/wholesale/nl/jsp/dynamic/homepage.jsp">Carrier and Wholesale Solutions</a> | </li> 
+		<li><a href="http://www.belgacom.com/">Belgacom Groep</a> | </li> 
+		<li><a href="http://www.telindus.com/">Telindus</a> |</li> 
+	    <li><a href="http://www.belgacom.com/group/8/career_work_at_bgc/nl/Waarom-bij-ons-dienst-nemen-.html" target="_blank">Jobs</a></li> 
+  </ul> 
+</div>
+
+		<div class="clr"></div>
+
+		<script src="https://be-belgacom.netmining.com/" type="text/javascript" language="javascript" defer="defer"></script>
+
+	</div>	
+
+</div>
+
+
+
+</div>
+
+</body>
+
+    
+
+</html>

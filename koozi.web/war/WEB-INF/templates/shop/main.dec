@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<#import "/spring.ftl" as spring>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<title><@spring.message "site.title"/></title>
+ 
+		<meta name="keywords" content="<@spring.message "site.keywords"/>"> 
+		<meta name="description" content="<@spring.message "site.description"/>"> 
+		<meta name="verify-v1" content="sZxDeTmiUEP5Bhke9BFw79enso4THSFXCBaj2FP9oXM=">
+		<meta name="google-site-verification" content="B7_U8--fTXLgcoEJ5lZvVQVBDDuKEIrM-I41LzFNy7g">
+
+		<script type="text/JavaScript" src="/static/shop/scripts/tools.js"></script>
+		
+		<script type="text/JavaScript" src="/static/shop/scripts/vallidation.js"></script> 
+		<script type="text/JavaScript" src="/static/shop/scripts/button.js"></script> 
+		<script type="text/javascript" src="/static/shop/scripts/magicthumb-packed.js"></script>
+		<script type="text/javascript" src="/static/shop/scripts/magicslideshow.js"></script>
+		<script type="text/javascript" src="/static/shop/scripts/jQuery.js"></script>
+		<script type="text/javascript" src="/static/shop/scripts/jQuery_waiting.js"></script>
+
+		 
+		<link type="text/css" rel="stylesheet" href="/static/shop/css/magicthumb.css"  media="screen, projection">
+		<link type="text/css" rel="stylesheet" href="/static/shop/css/koozi.css" media="screen">
+		<link type="text/css" rel="stylesheet" href="/static/shop/css/google.css" media="screen">
+		<link type="text/css" rel="stylesheet" href="/static/shop/css/vallidation.css" media="screen">
+		<link type="text/css" rel="stylesheet" href="/static/shop/css/magicslideshow.css" media="screen"> 
+		<link type="text/css" rel="stylesheet" href="/static/shop/css/KooziBlogger.css"> 
+		<link type="image/x-icon" rel="shortcut icon" href="/static/shop/icons/favicon.png">
+		<link type="image/x-icon" rel="icon" href="/static/shop/icons/favicon.png" >
+		<!--<link rel="image_src"   href="http://www.koozi.be/pictures/logo.png"  >-->
+
+		<script type="text/javascript"> 
+		
+		var searchValue = "<@spring.message "site.search"/>";
+		
+		MagicSlideshow.options = {
+						'preserve':	'yes',
+						'width' : 'auto',
+						'heigth' : 'auto',
+						'effect' : 'fade',
+						'arrows' : 'yes',
+						'thumbnails': 'off',
+						'container-padding': 10,
+						'loop': 'yes' // you can use false or 0 here
+					}
+		MagicThumb.options = { keepThumbnail: true, allowMultipleImages: false, backgroundFadingColor: '#000', backgroundFadingDuration: 0.4, backgroundFadingOpacity : 0.6  }
+		</script>
+		<script type="text/JavaScript" src="/static/shop/scripts/autopopulate.js"></script> 
+    </head>
+    <body>
+		<div id="bodyContainer">
+			<div id="swimlaneContainer">
+				<div id="swimlaneBorder">
+					<div id="swimlane">
+						<div id="headerContainer">
+							<div class="panel" id="headerBorder">
+								<div id="headerPicture"><a href="${base}/home"><img id="headerPicture" src="/static/shop/images/header/vogeltje.gif" ></a></div>
+								<div id="subHeader"><@spring.message "home.header"/></div>
+								<div class ="headerNavigationContainer">
+									<div class="headerNavigation headerNavigationLeft">
+										<a href="${base}/home"><@spring.message "links.home"/></a>
+										<a href="${base}/home/about"><@spring.message "links.about"/></a>
+										<a href="http://prematuur.blogspot.com/" alt="Koozi blog met weetjes over prematuren in de couveuse."><@spring.message "links.blog"/></a>
+										<a href="http://koozi-space.blogspot.com/" alt="Reacties en foto&#39;s van ouders."><@spring.message "links.space"/></a>
+										<a href="${base}/home/links"><@spring.message "links.links"/></a>
+										<a href="${base}/home/books"><@spring.message "links.books"/></a>
+										<a href="${base}/home/terms"><@spring.message "links.terms"/></a>
+										<a href="${base}/home/faq"><@spring.message "links.faq"/></a>
+										<a href="${base}/home/contact"><@spring.message "links.contact"/></a>
+									</div>
+									<div class="headerNavigation headerNavigationRight">
+										<a href="?lang=NL" alt="Nederlands">NL</a> - 
+										<a href="?lang=FR" alt="Francais">FR</a> - 
+										<a href="?lang=EN" alt="English">EN</a>
+									</div>
+								</div>
+								<div id="headerPictureBottom"><a href="${base}/home"><img src="/static/shop/images/header/bottom.gif"></a></div>
+							</div>
+						</div>
+
+						<table margin="0" cellpadding="0" cellspacing="0" padding="0" border="0" height="100%">
+							<tbody>
+								<tr>
+									<td valign="top" height="100%">
+										<div id="leftContainer">
+											<div id="navigationContainer">
+												<div class="panel" id="navigationBorder">
+													<div class="navigation">
+														<div id="productNavigation">
+															<img src="/static/shop/images/navigation/top.gif" width="150" height="114" alt="Koozi - Hippe benodigdheden voor je prematuur in de couveuse.">
+															<div id="productNavigationNormal">
+																<ul class="ProductGroupTree">
+																	<li class="cat_267"><a href="${base}/catalogues/muts" target=""><@spring.message "catalogue.name.muts"/></a></li>
+																	<li class="cat_302"><a href="${base}/catalogues/dekentje" target=""><@spring.message "catalogue.name.dekentje"/></a></li>
+																	<li class="cat_304"><a href="${base}/catalogues/nestje" target=""><@spring.message "catalogue.name.nestje"/></a></li>
+																	<li class="cat_303"><a href="${base}/catalogues/knuffel" target=""><@spring.message "catalogue.name.knuffel"/></a></li>
+																	<li class="cat_318"><a href="${base}/catalogues/kleding" target=""><@spring.message "catalogue.name.kleding"/></a></li>
+																	<li class="cat_319"><a href="${base}/catalogues/promoties" target=""><@spring.message "catalogue.name.promoties"/></a></li>
+																</ul>
+																<ul class="ProductGroupTree">
+																	<li><a href="${base}/home/measures" title="Lees meer en bepaal de juiste maat voor je prematuur." alt="Lees meer en bepaal de juiste maat voor je prematuur." target=""><@spring.message "catalogue.name.measurement"/></a></li>
+																</ul>
+															</div>
+															<div id="searchNavigation">
+																<form accept-charset="UTF-8" target="" method="GET" action="http://www.google.be/search?as_q=dekentje&=nl" name="search" enctype="application/x-www-form-urlencoded">
+																	<input name="formName" type="hidden" value="search">
+																	<table border="0">
+																		<tbody>
+																			<tr>
+																				<td>
+																					<input name="as_sitesearch" type="HIDDEN" value="koozi.be">
+																					<input name="hl" type="HIDDEN" value="${springMacroRequestContext.locale}">
+																					<input size="15" class="ProductSearchParameter" name="as_q" type="TEXT">
+																				</td>
+																			</tr>
+																		</tbody>
+																	</table>
+																</form>
+															</div>
+														</div>
+														<img src="/static/shop/images/navigation/bottom.gif" width="150" height="56" alt="Shop">
+													</div>
+												</div>
+											</div> 
+
+											<span style=" background-color: ">
+												<font size="0" color="red" face="Arial, Helvetica, sans-serif">
+													<div id="cartSummaryContainer">
+														<div class="navigation" id="cartSummary">
+															<a href="http://www.koozi.be/PublishedService?pageID=4&file=&" target="">
+																<img width="150" src="/static/shop/images/cart/top.gif" alt="winkelwagentje" border="0">
+															</a>
+															<div style="padding:5px;">
+																<ul class="winkelwagentjeBox"> 
+																	<li>Geen items</li>
+																</ul> 
+																<br>
+															</div><img  src="/static/shop/images/cart/bottom.gif"></div>
+													</div>
+												</font>
+											</span>
+											<div style="margin-top:30px; margin-left:20px; align:center">
+												<a href="http://www.beshops.org/home-consumenten.php"><img src="/static/shop/images/misc/Beshops-keurmerk.gif"></a>
+											</div>
+										</div>
+									</td>
+									<td width="100%" valign="top" height="100%">
+										<div id="contentContainer">
+											<div class="panel" id="contentBorder">
+												<div id="content">
+													${body}
+
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script><script src="./decorator_files/ga.js" type="text/javascript"></script>
+		<script type="text/javascript">
+		try {
+		var pageTracker = _gat._getTracker("UA-9198873-1");
+		pageTracker._trackPageview();
+		} catch(err) {}</script>
+
+		<script type="text/javascript">
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		</script><script src="./decorator_files/ga.js" type="text/javascript"></script>
+		<script type="text/javascript">
+		try {
+		var pageTracker = _gat._getTracker("UA-11288909-1");
+		pageTracker._trackPageview();
+		} catch(err) {}</script>
+	</body>
+</html>
