@@ -1,28 +1,26 @@
+ <a href="${base}/products">products</a> - 
+<a href="${base}/products/${product.id}">product</a>
+
 <h3>Product</h3>
-<#if product??>
-	<input type="hidden" name="_method" value="put"/>
-	<ul>
-		<li>Code: ${product.code}</li>
-		<li>Description: ${product.description}</li>
-		<li>Name: ${product.name}</li>
-		<#if product.thumbnail?? && product.thumbnail != "">
-			<img style="height:100px" border="1" src="${product.thumbnail}"/>
-		</#if>
-	</ul>
-
-
-	<form action="${base}/products/${product.id}" method="get">
-		<input type="submit"  value="Edit product"/>
-		<input type="hidden" name="view" value="edit"/>
-	</form>
-
-
-	<form action="${base}/products/${product.id}" method="post">
-		<input type="hidden" name="_method" value="delete"/>
-		<div>
-			<input type="submit"  value="Delete product"/>
-		</div>
-		
-	</form>
-</#if>
-<@include_page path="${base}/products/${product.id}/tags" inherit_params=true/>
+<@include_page path="${base}/products/${product.id}/metadata/default" inherit_params=true  params={"view": "embedded"}/>
+<form action="${base}/products/${product.id}/metadata" method="get">
+	<input type="submit"  value="Edit product metadata"/>
+	<input type="hidden" name="view" value="edit"/>
+</form>
+<#include "/default/product/product.embedded.ftl">
+<form action="${base}/products/${product.id}" method="get">
+	<input type="submit"  value="Edit product"/>
+	<input type="hidden" name="view" value="edit"/>
+</form>
+<h3>Tags</h3>
+<@include_page path="${base}/products/${product.id}/tags" inherit_params=true  params={"view": "embedded"}/>
+<form action="${base}/products/${product.id}/tags" method="get">
+	<input type="submit"  value="Edit product tags"/>
+	<input type="hidden" name="view" value="edit"/>
+</form>
+<h3>Pictures</h3>
+<@include_page path="${base}/products/${product.id}/pictures" inherit_params=true  params={"view": "embedded"}/>
+<form action="${base}/products/${product.id}/pictures" method="get">
+	<input type="submit"  value="Edit product pictures"/>
+	<input type="hidden" name="view" value="edit"/>
+</form>

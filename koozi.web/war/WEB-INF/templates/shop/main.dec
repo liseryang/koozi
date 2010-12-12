@@ -55,11 +55,11 @@
 					<div id="swimlane">
 						<div id="headerContainer">
 							<div class="panel" id="headerBorder">
-								<div id="headerPicture"><a href="${base}/home"><img id="headerPicture" src="/static/shop/images/header/vogeltje.gif" ></a></div>
+								<div id="headerPicture"><a href="/"><img id="headerPicture" src="/static/shop/images/header/vogeltje.gif" ></a></div>
 								<div id="subHeader"><@spring.message "home.header"/></div>
 								<div class ="headerNavigationContainer">
 									<div class="headerNavigation headerNavigationLeft">
-										<a href="${base}/home"><@spring.message "links.home"/></a>
+										<a href="/"><@spring.message "links.home"/></a>
 										<a href="${base}/home/about"><@spring.message "links.about"/></a>
 										<a href="http://prematuur.blogspot.com/" alt="Koozi blog met weetjes over prematuren in de couveuse."><@spring.message "links.blog"/></a>
 										<a href="http://koozi-space.blogspot.com/" alt="Reacties en foto&#39;s van ouders."><@spring.message "links.space"/></a>
@@ -84,6 +84,7 @@
 								<tr>
 									<td valign="top" height="100%">
 										<div id="leftContainer">
+										<@include_page path="${base}/cart" inherit_params=true params={"view": "short", "base" : "${base}"}/>
 											<div id="navigationContainer">
 												<div class="panel" id="navigationBorder">
 													<div class="navigation">
@@ -123,24 +124,7 @@
 													</div>
 												</div>
 											</div> 
-
-											<span style=" background-color: ">
-												<font size="0" color="red" face="Arial, Helvetica, sans-serif">
-													<div id="cartSummaryContainer">
-														<div class="navigation" id="cartSummary">
-															<a href="http://www.koozi.be/PublishedService?pageID=4&file=&" target="">
-																<img width="150" src="/static/shop/images/cart/top.gif" alt="winkelwagentje" border="0">
-															</a>
-															<div style="padding:5px;">
-																<ul class="winkelwagentjeBox"> 
-																	<li>Geen items</li>
-																</ul> 
-																<br>
-															</div><img  src="/static/shop/images/cart/bottom.gif"></div>
-													</div>
-												</font>
-											</span>
-											<div style="margin-top:30px; margin-left:20px; align:center">
+											<div style="margin-top:10px; margin-left:20px; align:center">
 												<a href="http://www.beshops.org/home-consumenten.php"><img src="/static/shop/images/misc/Beshops-keurmerk.gif"></a>
 											</div>
 										</div>
@@ -150,7 +134,6 @@
 											<div class="panel" id="contentBorder">
 												<div id="content">
 													${body}
-
 												</div>
 											</div>
 										</div>
