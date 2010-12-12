@@ -13,22 +13,17 @@ public class Product {
 	Long id;
 
 	String code;
-	String name;
-	String description;
 	private String thumbnail;
 	private int stock;
-
-	public Product(String code, String name, String description) {
+	private String collection;
+	
+	public Product(String code) {
 		this.code = code;
-		this.name = name;
-		this.description = description;
 	}
 
-	public Product(Long id, String code, String name, String description) {
+	public Product(Long id, String code) {
 		this.id = id;
 		this.code = code;
-		this.name = name;
-		this.description = description;
 	}
 
 	public String getCode() {
@@ -37,22 +32,6 @@ public class Product {
 
 	public void setCode(String code) {
 		this.code = code;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
 	}
 
 	public Long getId() {
@@ -74,4 +53,14 @@ public class Product {
 	public void setStock(int stock) {
 		this.stock = stock;
 	}
+
+	public String getCollection() {
+		return collection;
+	}
+
+	public void setCollection(String collection) {
+		this.collection = collection;
+	}
+	
+	
 }

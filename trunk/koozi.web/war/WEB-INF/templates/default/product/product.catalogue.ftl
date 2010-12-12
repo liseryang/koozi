@@ -1,11 +1,11 @@
 <#if product??>
-	<div>
+	<a href="${base}/products/${product.id}"><div>
 		<div>
 			<img style="height:100px" border="1" src="${product.thumbnail}"/>
 		</div>
 		<div>
-			Name: <a href="${base}/products/${product.id}">${product.name}</a>
+			${product.code}
 		</div>
-	</div>
+	</div></a>
 </#if>	
 

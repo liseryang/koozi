@@ -1,7 +1,4 @@
 <#if productTagList??>
-	<form accept-charset="UTF-8" method="POST" action="http://www.koozi.be/PublishedService?" name="productSpotForm" enctype="application/x-www-form-urlencoded">
-		<input name="formName" type="hidden" value="productSpotForm"><input name="file" type="hidden" value="">
-		<input name="formName" type="hidden" value="productSpotForm"><input name="file" type="hidden" value="">
 		<div class="productList">
 			<table margin="0" cellpadding="0" cellspacing="0" padding="0" border="0" class="productList">
 					<tbody>
@@ -19,5 +16,4 @@
 					</tbody>
 			</table>
 		</div>
-	</form>
 </#if>

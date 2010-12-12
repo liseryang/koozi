@@ -55,7 +55,13 @@ public class EntityDaoJpaImpl<T, ID> implements EntityDao<T, ID> {
 
 	@Override
 	public void delete(final Object entityId) {
-		jpaTemplate.remove(jpaTemplate.find(clazz, entityId));
+		jpaTemplate.execute(new JpaCallback() {
+			public Object doInJpa(EntityManager em) throws PersistenceException {
+				T entity = em.find(clazz, entityId);
+				em.remove(entity);
+				return null;
+			}
+		}, true);
 	}
 
 	@Override

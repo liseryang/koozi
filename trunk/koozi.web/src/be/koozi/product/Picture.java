@@ -13,14 +13,11 @@ public class Picture {
 	
 	String href;
 
-	String description;
+	Long productId;
 
-	String productId;
-
-	public Picture(String href, String description, String productId) {
+	public Picture(String href, Long productId) {
 		super();
 		this.href = href;
-		this.description = description;
 		this.productId = productId;
 	}
 
@@ -28,11 +25,12 @@ public class Picture {
 		return href;
 	}
 
-	public String getDescription() {
-		return description;
+	
+	public void setHref(String href) {
+		this.href = href;
 	}
 
-	public String getProductId() {
+	public Long getProductId() {
 		return productId;
 	}
 

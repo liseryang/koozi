@@ -12,9 +12,9 @@
 	</decorator>
 	<decorator name="openAPI" page="/decorator/openAPI/main.dec">
 		<pattern>/openAPI</pattern>
-	</decorator><!--
-	<decorator name="rest" page="/decorator/rest/main.dec">
+	</decorator>
+	<decorator name="rest" page="/decorator/default/main.dec">
 		<pattern>/rest</pattern>
 	</decorator>
-	--><decorator name="printable" page="/printable.dec" />
+	<decorator name="printable" page="/printable.dec" />
 </decorators>

@@ -2,7 +2,7 @@
 <#if productList??>
 	<ul>
 		<#list productList as product>
-			<li><a href="${base}/products/${product.id}">${product.name}</a></li>
+			<li><a href="${base}/products/${product.id}">${product.code}</a></li>
 		</#list>
 	</ul>
 	<form action="${base}/products/new" method="get">

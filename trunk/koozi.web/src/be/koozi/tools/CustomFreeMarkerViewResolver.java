@@ -13,6 +13,7 @@ public class CustomFreeMarkerViewResolver extends FreeMarkerViewResolver
 	public View resolveViewName(String viewName, Locale locale) throws Exception {
 		ServletRequestAttributes attrs = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 		String servletPath = attrs.getRequest().getServletPath();
+		
 		attrs.setAttribute("base", servletPath, 0);
 
 		// add context to redirect

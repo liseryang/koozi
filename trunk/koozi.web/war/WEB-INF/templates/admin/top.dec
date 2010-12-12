@@ -2,5 +2,5 @@
 <li><a href="/admin/sms/new">Send sms</a></li>
 <li><a href="/admin/users">Users management</a></li>
 <#if authentication?? && authentication.principal??> 
-		, ${authentication.principal.forename} ${authentication.principal.surname}!
+		<li><a href="/openAPI/users/logout">Logout</a></li>
 </#if>
