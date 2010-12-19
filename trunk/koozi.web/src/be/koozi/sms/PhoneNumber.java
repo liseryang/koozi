@@ -5,7 +5,7 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 public class PhoneNumber {
-	
+
 	@Basic
 	private String number;
 

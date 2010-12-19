@@ -51,12 +51,11 @@ public class GoogleAccountsAuthenticationProvider implements AuthenticationProvi
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 		com.google.appengine.api.users.User googleUser = (com.google.appengine.api.users.User) authentication.getPrincipal();
 		Collection<GrantedAuthority> roles = null;
-		
+
 		User user = null;
-		try{
+		try {
 			user = userDao.find(googleUser.getUserId());
-		}catch(Throwable e)
-		{
+		} catch (Throwable e) {
 			e.printStackTrace();
 		}
 

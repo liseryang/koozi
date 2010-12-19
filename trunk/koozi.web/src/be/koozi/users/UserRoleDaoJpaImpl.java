@@ -19,7 +19,7 @@ import be.koozi.entity.EntityDaoJpaImpl;
 public class UserRoleDaoJpaImpl extends EntityDaoJpaImpl<UserRole, Long> implements UserRoleDao {
 
 	@Autowired
-	public UserRoleDaoJpaImpl( JpaTemplate jpaTemplate) {
+	public UserRoleDaoJpaImpl(JpaTemplate jpaTemplate) {
 		super(UserRole.class, jpaTemplate);
 	}
 
@@ -32,8 +32,8 @@ public class UserRoleDaoJpaImpl extends EntityDaoJpaImpl<UserRole, Long> impleme
 
 	@Override
 	public Collection<GrantedAuthority> findRoles(String userId) {
-		Collection<UserRole> userRoles =  findAll(); //(userId);
-			//
+		Collection<UserRole> userRoles = findByUser(userId); // (userId);
+		//
 
 		Collection<GrantedAuthority> roles = new LinkedList<GrantedAuthority>();
 

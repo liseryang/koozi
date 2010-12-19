@@ -10,7 +10,7 @@ import be.koozi.entity.EntityDaoJpaImpl;
 public class CartDaoJpaImpl extends EntityDaoJpaImpl<Cart, Long> implements CartDao {
 
 	@Autowired
-	public CartDaoJpaImpl( JpaTemplate jpaTemplate) {
+	public CartDaoJpaImpl(JpaTemplate jpaTemplate) {
 		super(Cart.class, jpaTemplate);
 	}
 }

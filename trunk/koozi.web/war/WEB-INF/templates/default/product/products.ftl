@@ -1,3 +1,5 @@
+<#setting number_format="0">
+
 <h3>Products</h3>
 <#if productList??>
 	<ul>

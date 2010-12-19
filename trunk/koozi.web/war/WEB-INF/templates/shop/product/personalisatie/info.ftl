@@ -9,8 +9,8 @@
 
 <div style="float: left; padding-top: 10px;"><a
 	title="Personaliseer je dekentje." class="ThumbSmall  MagicThumb"
-	href="http://www.koozi.be/pictures/Bedrukking+large.JPG"><img
-	border="0" src="http://www.koozi.be/pictures/Bedrukking+small.JPG"></a>
+	href="/static/shop/images/misc/BedrukkingLarge.JPG"><img
+	border="0" src="/static/shop/images/misc/BedrukkingSmall.JPG"></a>
 </div>
 
 
@@ -19,9 +19,9 @@
 
 <div style="float: right"><a title="Personaliseer je dekentje."
 	class="ThumbSmall  MagicThumb"
-	href="http://www.koozi.be/pictures/Bedrukking+large+large.JPG"><img
+	href="/static/shop/images/misc/BedrukkingLargeLarge.JPG"><img
 	border="0"
-	src="http://www.koozi.be/pictures/Bedrukking+large+small.JPG"></a><br />
+	src="/static/shop/images/misc/BedrukkingLargeSmall.JPG"></a><br />
 &nbsp; Grote letters</div>
 
 
@@ -29,8 +29,8 @@
 
 
 <div style="float: right; padding-top: 30px">
-	<a title="Personaliseer je dekentje." class="ThumbSmall  MagicThumb" href="http://www.koozi.be/pictures/Bedrukking+small+large.JPG">
-		<img src="http://www.koozi.be/pictures/Bedrukking+small+small.JPG"/>
+	<a title="Personaliseer je dekentje." class="ThumbSmall  MagicThumb" href="/static/shop/images/misc/BedrukkingSmallLarge.JPG">
+		<img src="/static/shop/images/misc/BedrukkingSmallSmall.JPG"/>
 	</a>
 	<br />
 	&nbsp; Kleine letters

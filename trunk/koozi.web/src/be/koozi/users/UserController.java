@@ -61,11 +61,7 @@ public class UserController {
 	@RequestMapping(value = "/users/{userId}", method = RequestMethod.GET)
 	public String findUser(ModelMap model, @PathVariable("userId") String userId, @RequestParam(value = "view", required = false) String view) {
 		model.addAttribute("user", userDao.find(userId));
-		if (view == null)
-			return "users/user";
-		else
-			return "users/user." + view;
-
+		return "users/user";
 	}
 
 	@RolesAllowed("ROLE_USER")
@@ -76,22 +72,14 @@ public class UserController {
 		User user = userDao.find(gaeUser.getUserId());
 		model.addAttribute("user", user);
 		model.addAttribute("isCurrentuser", true);
-		if (view == null)
-			return "users/currentUser";
-		else
-			return "users/currentUser." + view;
-
+		return "users/user";
 	}
 
 	@RolesAllowed("ROLE_ADMIN")
 	@RequestMapping(value = "/users", method = RequestMethod.GET)
 	public String findUsers(ModelMap model, @RequestParam(value = "view", required = false) String view) {
 		model.addAttribute("userList", userDao.findAll());
-		if (view == null)
-			return "users/users";
-		else
-			return "users/users." + view;
-
+		return "users/users";
 	}
 
 	@RolesAllowed("ROLE_ADMIN")
@@ -183,11 +171,7 @@ public class UserController {
 	public String findUserRoles(ModelMap model, @PathVariable("userId") String userId, @RequestParam(value = "view", required = false) String view) {
 		model.addAttribute("userRolesList", userRoleDao.findByUser(userId));
 		model.addAttribute("userId", userId);
-		if (view == null)
-			return "/users/roles";
-		else
-			return "/users/roles." + view;
-
+		return "/users/roles";
 	}
 
 	@RolesAllowed("ROLE_USER")
@@ -195,6 +179,7 @@ public class UserController {
 	public String findCurrentUserRoles(ModelMap model) {
 		com.google.appengine.api.users.User gaeUser = userService.getCurrentUser();
 		model.addAttribute("userRolesList", userRoleDao.findByUser(gaeUser.getUserId()));
+		model.addAttribute("isCurrentuser", true);
 		return "/users/roles";
 
 	}

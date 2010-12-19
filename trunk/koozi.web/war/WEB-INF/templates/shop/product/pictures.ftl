@@ -1,3 +1,4 @@
+<#setting number_format="0">
 <#list pictureList as picture>
 	<div id="productItemPicture">
 		<a class="ThumbLarge  MagicThumb" href="${picture.href}">

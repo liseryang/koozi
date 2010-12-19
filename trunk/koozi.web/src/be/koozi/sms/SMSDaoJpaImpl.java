@@ -14,7 +14,7 @@ import be.koozi.entity.EntityDaoJpaImpl;
 public class SMSDaoJpaImpl extends EntityDaoJpaImpl<SMS, Long> implements SMSDao {
 
 	@Autowired
-	public SMSDaoJpaImpl( JpaTemplate jpaTemplate) {
+	public SMSDaoJpaImpl(JpaTemplate jpaTemplate) {
 		super(SMS.class, jpaTemplate);
 	}
 

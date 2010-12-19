@@ -13,7 +13,7 @@ import be.koozi.entity.EntityDaoJpaImpl;
 public class SMSResultDaoJpaImpl extends EntityDaoJpaImpl<SMSResult, Long> implements SMSResultDao {
 
 	@Autowired
-	public SMSResultDaoJpaImpl( JpaTemplate jpaTemplate) {
+	public SMSResultDaoJpaImpl(JpaTemplate jpaTemplate) {
 		super(SMSResult.class, jpaTemplate);
 	}
 

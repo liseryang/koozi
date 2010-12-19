@@ -13,15 +13,14 @@ import be.koozi.entity.EntityDaoJpaImpl;
 public class UserDaoJpaImpl extends EntityDaoJpaImpl<User, String> implements UserDao {
 
 	@Autowired
-	public UserDaoJpaImpl(  JpaTemplate jpaTemplate) {
+	public UserDaoJpaImpl(JpaTemplate jpaTemplate) {
 		super(User.class, jpaTemplate);
 	}
-	
-	
+
 	public User find(final String userId) {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("userId", userId);
 		return find(params).iterator().next();
 	}
-	
+
 }

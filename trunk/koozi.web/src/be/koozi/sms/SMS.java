@@ -11,18 +11,18 @@ import javax.persistence.OneToOne;
 @Entity
 public class SMS {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 
 	String content;
-	
+
 	@Embedded
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	PhoneNumber phoneNumber;
 	String userId;
 	@Embedded
-	@OneToOne(cascade=CascadeType.ALL)
+	@OneToOne(cascade = CascadeType.ALL)
 	SMSResult smsResult;
 
 	public SMS(String content, PhoneNumber number) {

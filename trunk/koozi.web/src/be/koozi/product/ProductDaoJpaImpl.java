@@ -10,7 +10,7 @@ import be.koozi.entity.EntityDaoJpaImpl;
 public class ProductDaoJpaImpl extends EntityDaoJpaImpl<Product, Long> implements ProductDao {
 
 	@Autowired
-	public ProductDaoJpaImpl( JpaTemplate jpaTemplate) {
+	public ProductDaoJpaImpl(JpaTemplate jpaTemplate) {
 		super(Product.class, jpaTemplate);
 	}
 }

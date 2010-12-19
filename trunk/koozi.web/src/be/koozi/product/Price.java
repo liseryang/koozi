@@ -10,29 +10,43 @@ import javax.persistence.Id;
 
 @Entity
 public class Price {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
-	
+
 	BigDecimal amount;
 
-	Currency currency;
-
 	Long productId;
+
+	Long optionId;
+	
+	String currencyCode;
 
 	public Price(BigDecimal amount, Currency currency, Long productId) {
 		super();
 		this.amount = amount;
-		this.currency = currency;
+		this.currencyCode = currency.getCurrencyCode();
 		this.productId = productId;
 	}
 
+
+	public Price(BigDecimal amount, Currency currency, Long optionId, boolean option) {
+		super();
+		this.amount = amount;
+		this.currencyCode = currency.getCurrencyCode();
+		this.optionId = optionId;
+	}
+	
 	public BigDecimal getAmount() {
 		return amount;
 	}
 
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
+	}
+
 	public Currency getCurrency() {
-		return currency;
+		return Currency.getInstance(currencyCode);
 	}
 
 	public Long getProductId() {
@@ -42,5 +56,4 @@ public class Price {
 	public Long getId() {
 		return id;
 	}
-	
 }

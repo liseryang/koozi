@@ -1,5 +1,18 @@
-<h1 class="title">${product.code}	</h1>
+<#setting number_format="0">
 
+<#import "/spring.ftl" as spring>
+
+${myContext.fetch(base + "/products/" +  product.id + "/metadata/locale")}
+${myContext.fetch(base + "/products/" +  product.id + "/pictures/")}
+
+
+<#assign metadata =  myContext.getModelObject("metadata")>
+<#assign pictureList =  myContext.getModelObject("pictureList")>
+
+
+<h1 class="title">${metadata.name}	</h1>
+<form method="post" action="${base}/cart/myCart/cartItems" name="addToCart" >
+<input  name="productId" value="${product.id}" type="hidden">
 	<div id="productItemContainer">
 		<div class="innerPanel" id="productItemBorder" name="productItemBorder">
 			<div id="productItem">
@@ -23,75 +36,33 @@
 				
 					<tr class="productItem">
 				
-						<td class="key productItem">Aantal:</td>
+						<td class="key productItem"><@spring.message "product.amount"/></td>
 				
-						<td class="value productItem" id="productItemAantal"><input
-							size="2" value="1" class="ProductAmountField" name="amount490"
-							type="TEXT"></td>
-				
-					</tr>
-				
-					<tr class="productItemOptions">
-				
-						<td colspan="2" class="productItemOptions">
-				
-						<table>
-							<tr>
-								<td>Maat (LxB):</td>
-								<td><select name="490option0" class="ProductOptionsField">
-									<option value="56 x 48">56 x 48
-								</select></td>
-							</tr>
-							<tr>
-								<td>Bedrukking</td>
-								<td><select name="490option1" class="ProductOptionsField">
-									<option value="Geen opdruk">Geen opdruk
-									<option value="Naam in kleine letters">Naam in kleine
-									letters ( + 2,50€ )
-									<option value="Naam in grote letters">Naam in grote
-									letters ( + 3,50€ )
-								</select></td>
-							</tr>
-						</table>
-				
-						</td>
+						<td class="value productItem" id="xx">
+						<input class="ProductAmountField" name="amount" value="1" type="text"></td>
 				
 					</tr>
+					<@include_page path="${base}/products/${product.id}/options" inherit_params=false/>
+				
+				
 				
 					<tr class="productItem">
 				
-						<td class="key productItem">Prijs per stuk:</td>
+						<td class="key productItem"><@spring.message "product.price"/></td>
 				
-						<td class="value productItem price" id="productItemPrijs">13,00€
-				
+						<td class="value productItem price" id="productItemPrijs">
+							<@include_page path="${base}/products/${product.id}/prices/locale" inherit_params=false/>
 						</td>
 				
 					</tr>
-				
-					<tr class="productItem">
-				
-						<td colspan="2" class="key">
-				
-						<div class="alert"></div>
-				
-						</td>
-				
-					</tr>
-				
+			
 				</table>
+					</div>
+
+				
+				<div id="productItemAdd" class="addToCart"><a class="addToCart button" href="javascript:document.addToCart.submit()"><div><@spring.message "cart.add"/></div></a></div>
 				
 				
-				
-				</div>
-				
-				<input name="pageID" type="hidden" value="4" />
-				
-				<div id="productItemSpacer"></div>
-				
-				<div id="productItemAdd"><input
-					SRC="pictures/bt_toevoegen_aan_winkelwagen.gif" value=""
-					class="ProductAddButton" name="add490" type="IMAGE"> <a
-					name="DEKENTJE-AIKO"></a></div>
 				
 				<!--<input onClick="return checkform ( form )" type="button"/>-->
 				
@@ -102,7 +73,7 @@
 				</div>
 				</div>
 
-	<#include "${base}/product/dekentje/info.ftl"/>
-</div>
-
+		<#include "${base}/product/dekentje/info.ftl"/>
+	</div>
+</form>
 <@include_page path="${base}/catalogues/${product.collection}" inherit_params=true params={"view": "embedded"}/>

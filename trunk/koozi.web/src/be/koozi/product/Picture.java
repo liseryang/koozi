@@ -7,10 +7,10 @@ import javax.persistence.Id;
 
 @Entity
 public class Picture {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
-	
+
 	String href;
 
 	Long productId;
@@ -25,7 +25,6 @@ public class Picture {
 		return href;
 	}
 
-	
 	public void setHref(String href) {
 		this.href = href;
 	}
@@ -37,5 +36,5 @@ public class Picture {
 	public Long getId() {
 		return id;
 	}
-	
+
 }

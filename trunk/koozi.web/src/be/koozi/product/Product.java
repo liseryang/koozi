@@ -8,15 +8,15 @@ import javax.persistence.Id;
 @Entity
 public class Product {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 
 	String code;
 	private String thumbnail;
 	private int stock;
 	private String collection;
-	
+
 	public Product(String code) {
 		this.code = code;
 	}
@@ -61,6 +61,5 @@ public class Product {
 	public void setCollection(String collection) {
 		this.collection = collection;
 	}
-	
-	
+
 }

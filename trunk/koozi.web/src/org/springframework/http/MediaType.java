@@ -766,29 +766,29 @@ public class MediaType implements Comparable<MediaType> {
 
 		public int compare(MediaType mediaType1, MediaType mediaType2) {
 			if (mediaType1.isWildcardType() && !mediaType2.isWildcardType()) { // */*
-																				// <
-																				// audio/*
+				// <
+				// audio/*
 				return 1;
 			} else if (mediaType2.isWildcardType() && !mediaType1.isWildcardType()) { // audio/*
-																						// >
-																						// */*
+				// >
+				// */*
 				return -1;
 			} else if (!mediaType1.getType().equals(mediaType2.getType())) { // audio/basic
-																				// ==
-																				// text/html
+				// ==
+				// text/html
 				return 0;
 			} else { // mediaType1.getType().equals(mediaType2.getType())
 				if (mediaType1.isWildcardSubtype() && !mediaType2.isWildcardSubtype()) { // audio/*
-																							// <
-																							// audio/basic
+					// <
+					// audio/basic
 					return 1;
 				} else if (mediaType2.isWildcardSubtype() && !mediaType1.isWildcardSubtype()) { // audio/basic
-																								// >
-																								// audio/*
+					// >
+					// audio/*
 					return -1;
 				} else if (!mediaType1.getSubtype().equals(mediaType2.getSubtype())) { // audio/basic
-																						// ==
-																						// audio/wave
+					// ==
+					// audio/wave
 					return 0;
 				} else { // mediaType2.getSubtype().equals(mediaType2.getSubtype())
 					double quality1 = mediaType1.getQualityValue();
@@ -796,13 +796,13 @@ public class MediaType implements Comparable<MediaType> {
 					int qualityComparison = Double.compare(quality2, quality1);
 					if (qualityComparison != 0) {
 						return qualityComparison; // audio/*;q=0.7 <
-													// audio/*;q=0.3
+						// audio/*;q=0.3
 					} else {
 						int paramsSize1 = mediaType1.parameters.size();
 						int paramsSize2 = mediaType2.parameters.size();
 						return (paramsSize2 < paramsSize1 ? -1 : (paramsSize2 == paramsSize1 ? 0 : 1)); // audio/basic;level=1
-																										// <
-																										// audio/basic
+						// <
+						// audio/basic
 					}
 				}
 			}
@@ -818,36 +818,36 @@ public class MediaType implements Comparable<MediaType> {
 			if (qualityComparison != 0) {
 				return qualityComparison; // audio/*;q=0.7 < audio/*;q=0.3
 			} else if (mediaType1.isWildcardType() && !mediaType2.isWildcardType()) { // */*
-																						// <
-																						// audio/*
+				// <
+				// audio/*
 				return 1;
 			} else if (mediaType2.isWildcardType() && !mediaType1.isWildcardType()) { // audio/*
-																						// >
-																						// */*
+				// >
+				// */*
 				return -1;
 			} else if (!mediaType1.getType().equals(mediaType2.getType())) { // audio/basic
-																				// ==
-																				// text/html
+				// ==
+				// text/html
 				return 0;
 			} else { // mediaType1.getType().equals(mediaType2.getType())
 				if (mediaType1.isWildcardSubtype() && !mediaType2.isWildcardSubtype()) { // audio/*
-																							// <
-																							// audio/basic
+					// <
+					// audio/basic
 					return 1;
 				} else if (mediaType2.isWildcardSubtype() && !mediaType1.isWildcardSubtype()) { // audio/basic
-																								// >
-																								// audio/*
+					// >
+					// audio/*
 					return -1;
 				} else if (!mediaType1.getSubtype().equals(mediaType2.getSubtype())) { // audio/basic
-																						// ==
-																						// audio/wave
+					// ==
+					// audio/wave
 					return 0;
 				} else {
 					int paramsSize1 = mediaType1.parameters.size();
 					int paramsSize2 = mediaType2.parameters.size();
 					return (paramsSize2 < paramsSize1 ? -1 : (paramsSize2 == paramsSize1 ? 0 : 1)); // audio/basic;level=1
-																									// <
-																									// audio/basic
+					// <
+					// audio/basic
 				}
 			}
 		}
