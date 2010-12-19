@@ -1,3 +1,4 @@
+<#setting number_format="0">
 <#if product??>
 	<a href="${base}/products/${product.id}"><div>
 		<div>

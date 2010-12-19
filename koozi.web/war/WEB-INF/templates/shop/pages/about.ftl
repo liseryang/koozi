@@ -1,7 +1,7 @@
 <h1 class="title">Hippe benodigdheden voor prematuren</h1>
 <p><img src="/static/shop/images/misc/Logo_220.png" alt="" align="right"> In september 2008 is het idee ontstaan om originele nestjes te ontwerpen voor prematuren. Veel leuke en zotte ideeën, maar nog geen concreet plan.</p>
 <p>Zo groeide het project om een webwinkel te starten voor de verkoop van benodigdheden voor prematuren. Onze doelstelling is originele en hippe accessoires voor prematurenzorg aan te bieden, die ook verantwoord zijn.</p>
-<p>In maart namen we deel aan verschillende initiatieven voor beginnende ondernemingen. EÃ©n van deze initiatieven was Bizidee. Dit is een wedstrijd voor het beste ondernemingsplan. De beoordeling was zeer bemoedigend. Onder professionele begeleiding van Agentschap Ondernemen is het plan van de webwinkel verder uitgebouwd tot een volwaardig businessplan.</p>
+<p>In maart namen we deel aan verschillende initiatieven voor beginnende ondernemingen. Eén van deze initiatieven was Bizidee. Dit is een wedstrijd voor het beste ondernemingsplan. De beoordeling was zeer bemoedigend. Onder professionele begeleiding van Agentschap Ondernemen is het plan van de webwinkel verder uitgebouwd tot een volwaardig businessplan.</p>
 <p>Het zoeken van een geschikte productie-partner heeft enkele maanden in beslag genomen. Verzekeringsmakelaar en advokaat werden geraadpleegd.</p>
 <p>En dit is het resultaat: een webwinkel met verantwoorde en originele benodigdheden voor prematuren. Gecombineerd met tips en links voor ouders en familie van vroeggeboren baby's.</p>
 <p>Veel surf en winkel plezier.</p>

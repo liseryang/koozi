@@ -1,6 +1,5 @@
+<#setting number_format="0">
 <h3>Catalogues</h3>
-<#if productTagValues??>
-		<#list productTagValues as value>
-			<div><a href="${base}/catalogues/${value}">${value}</a></div>
-		</#list>
-</#if>
+<#list tagValues as value>
+	<div><a href="${base}/catalogues/${value}">${value}</a></div>
+</#list>

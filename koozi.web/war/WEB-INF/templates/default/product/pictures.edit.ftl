@@ -1,3 +1,4 @@
+<#setting number_format="0">
 <a href="${base}/products">products</a> - 
 <a href="${base}/products/${productId}">product</a> -
 <a href="${base}/products/${productId}/pictures">pictures</a>

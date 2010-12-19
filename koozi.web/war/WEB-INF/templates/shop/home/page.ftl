@@ -1,3 +1,4 @@
+<#setting number_format="0">
 <#import "/spring.ftl" as spring>
 <h1 class="title"><@spring.message "home.title"/></h1>
 <div id="homePageSlideShowContainer">

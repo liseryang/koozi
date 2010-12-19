@@ -1,3 +1,4 @@
+<#setting number_format="0">
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <#import "/spring.ftl" as spring>
 <html>
@@ -20,9 +21,13 @@
 		<script type="text/javascript" src="/static/shop/scripts/jQuery_waiting.js"></script>
 
 		 
+		<link type="text/css" rel="stylesheet" href="/static/shop/css/koozi.old.css" media="screen">
 		<link type="text/css" rel="stylesheet" href="/static/shop/css/magicthumb.css"  media="screen, projection">
 		<link type="text/css" rel="stylesheet" href="/static/shop/css/koozi.css" media="screen">
 		<link type="text/css" rel="stylesheet" href="/static/shop/css/google.css" media="screen">
+		<link type="text/css" rel="stylesheet" href="/static/shop/css/koozi.button.css" media="screen">
+		<link type="text/css" rel="stylesheet" href="/static/shop/css/koozi.navigation.css" media="screen">
+
 		<link type="text/css" rel="stylesheet" href="/static/shop/css/vallidation.css" media="screen">
 		<link type="text/css" rel="stylesheet" href="/static/shop/css/magicslideshow.css" media="screen"> 
 		<link type="text/css" rel="stylesheet" href="/static/shop/css/KooziBlogger.css"> 
@@ -55,11 +60,11 @@
 					<div id="swimlane">
 						<div id="headerContainer">
 							<div class="panel" id="headerBorder">
-								<div id="headerPicture"><a href="/"><img id="headerPicture" src="/static/shop/images/header/vogeltje.gif" ></a></div>
+								<div id="headerPicture"><a href="${base}/home"><img id="headerPicture" src="/static/shop/images/header/vogeltje.gif" ></a></div>
 								<div id="subHeader"><@spring.message "home.header"/></div>
 								<div class ="headerNavigationContainer">
 									<div class="headerNavigation headerNavigationLeft">
-										<a href="/"><@spring.message "links.home"/></a>
+										<a href="${base}/home"><@spring.message "links.home"/></a>
 										<a href="${base}/home/about"><@spring.message "links.about"/></a>
 										<a href="http://prematuur.blogspot.com/" alt="Koozi blog met weetjes over prematuren in de couveuse."><@spring.message "links.blog"/></a>
 										<a href="http://koozi-space.blogspot.com/" alt="Reacties en foto&#39;s van ouders."><@spring.message "links.space"/></a>
@@ -74,6 +79,14 @@
 										<a href="?lang=FR" alt="Francais">FR</a> - 
 										<a href="?lang=EN" alt="English">EN</a>
 									</div>
+									
+									<#if springMacroRequestContext.locale == "en">
+										<div class="headerNavigation headerNavigationRight">
+											<a href="?currency=GBP" alt="Pounds">GBP</a> - 
+											<a href="?currency=EUR" alt="Euro">EUR</a>
+										</div>
+									</#if>
+
 								</div>
 								<div id="headerPictureBottom"><a href="${base}/home"><img src="/static/shop/images/header/bottom.gif"></a></div>
 							</div>
@@ -84,46 +97,41 @@
 								<tr>
 									<td valign="top" height="100%">
 										<div id="leftContainer">
-										<@include_page path="${base}/cart" inherit_params=true params={"view": "short", "base" : "${base}"}/>
-											<div id="navigationContainer">
-												<div class="panel" id="navigationBorder">
-													<div class="navigation">
-														<div id="productNavigation">
-															<img src="/static/shop/images/navigation/top.gif" width="150" height="114" alt="Koozi - Hippe benodigdheden voor je prematuur in de couveuse.">
-															<div id="productNavigationNormal">
-																<ul class="ProductGroupTree">
-																	<li class="cat_267"><a href="${base}/catalogues/muts" target=""><@spring.message "catalogue.name.muts"/></a></li>
-																	<li class="cat_302"><a href="${base}/catalogues/dekentje" target=""><@spring.message "catalogue.name.dekentje"/></a></li>
-																	<li class="cat_304"><a href="${base}/catalogues/nestje" target=""><@spring.message "catalogue.name.nestje"/></a></li>
-																	<li class="cat_303"><a href="${base}/catalogues/knuffel" target=""><@spring.message "catalogue.name.knuffel"/></a></li>
-																	<li class="cat_318"><a href="${base}/catalogues/kleding" target=""><@spring.message "catalogue.name.kleding"/></a></li>
-																	<li class="cat_319"><a href="${base}/catalogues/promoties" target=""><@spring.message "catalogue.name.promoties"/></a></li>
-																</ul>
-																<ul class="ProductGroupTree">
-																	<li><a href="${base}/home/measures" title="Lees meer en bepaal de juiste maat voor je prematuur." alt="Lees meer en bepaal de juiste maat voor je prematuur." target=""><@spring.message "catalogue.name.measurement"/></a></li>
-																</ul>
+										<@include_page path="${base}/cart/myCart/cartItems" inherit_params=true params={"view": "short", "base" : "${base}"}/>
+											<div class="productNavigation container">
+												<div class="productNavigation border">
+													<img src="/static/shop/images/navigation/top.gif" alt="Koozi - Hippe benodigdheden voor je prematuur in de couveuse."><div class="productNavigation body">
+														<ul>
+																<li><a href="${base}/catalogues/muts" target=""><@spring.message "catalogue.name.muts"/></a></li>
+																<li><a href="${base}/catalogues/dekentje" target=""><@spring.message "catalogue.name.dekentje"/></a></li>
+																<li><a href="${base}/catalogues/nestje" target=""><@spring.message "catalogue.name.nestje"/></a></li>
+																<li><a href="${base}/catalogues/knuffel" target=""><@spring.message "catalogue.name.knuffel"/></a></li>
+																<li><a href="${base}/catalogues/kleding" target=""><@spring.message "catalogue.name.kleding"/></a></li>
+																<li><a href="${base}/catalogues/promoties" target=""><@spring.message "catalogue.name.promoties"/></a></li>
+															</ul>
+															<ul>
+																<li><a href="${base}/home/measures" title="Lees meer en bepaal de juiste maat voor je prematuur." alt="Lees meer en bepaal de juiste maat voor je prematuur." target=""><@spring.message "catalogue.name.measurement"/></a></li>
+															</ul>
+															<form accept-charset="UTF-8" target="" method="GET" action="http://www.google.be/search?as_q=dekentje&=nl" name="search" enctype="application/x-www-form-urlencoded">
+																<input name="formName" type="hidden" value="search">
+																<table border="0">
+																	<tbody>
+																		<tr>
+																			<td>
+																				<input name="as_sitesearch" type="HIDDEN" value="koozi.be">
+																				<input name="hl" type="HIDDEN" value="${springMacroRequestContext.locale}">
+																				<input class="ProductSearchParameter" name="as_q" type="TEXT">
+																			</td>
+																		</tr>
+																	</tbody>
+																</table>
+															</form>
 															</div>
-															<div id="searchNavigation">
-																<form accept-charset="UTF-8" target="" method="GET" action="http://www.google.be/search?as_q=dekentje&=nl" name="search" enctype="application/x-www-form-urlencoded">
-																	<input name="formName" type="hidden" value="search">
-																	<table border="0">
-																		<tbody>
-																			<tr>
-																				<td>
-																					<input name="as_sitesearch" type="HIDDEN" value="koozi.be">
-																					<input name="hl" type="HIDDEN" value="${springMacroRequestContext.locale}">
-																					<input size="15" class="ProductSearchParameter" name="as_q" type="TEXT">
-																				</td>
-																			</tr>
-																		</tbody>
-																	</table>
-																</form>
-															</div>
-														</div>
 														<img src="/static/shop/images/navigation/bottom.gif" width="150" height="56" alt="Shop">
 													</div>
-												</div>
 											</div> 
+											
+											
 											<div style="margin-top:10px; margin-left:20px; align:center">
 												<a href="http://www.beshops.org/home-consumenten.php"><img src="/static/shop/images/misc/Beshops-keurmerk.gif"></a>
 											</div>

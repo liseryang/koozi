@@ -57,7 +57,7 @@
 		<property name="defaultContentType" value="text/html" />
 		<property name="mediaTypes">
 			<map>
-
+				<entry key="model" value="application/model" />
 				<entry key="html" value="text/html" />
 				<entry key="json" value="application/json" />
 				<entry key="xml" value="application/xml" />
@@ -73,16 +73,12 @@
 					<property name="requestContextAttribute" value="rc" />
 					 
 				</bean>
-				<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-					<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
-					<property name="prefix" value="/WEB-INF/jsp/" />
-					<property name="suffix" value=".jsp" />
-				</bean>
 			</list>
 		</property>
 		<property name="defaultViews">
 			<list>
-				<bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView"><!--
+				<!--<bean class="be.koozi.tools.ModelView"/>
+				--><bean class="org.springframework.web.servlet.view.json.MappingJacksonJsonView"><!--
 					<property name="prefixJson" value="true" />
 				-->
 				</bean>
@@ -111,8 +107,21 @@
 		<property name="paramName" value="lang" />
 	</bean>
 	
+	
+	<bean id="currencyChangeInterceptor" class="be.koozi.tools.CurrencyChangeInterceptor">
+		<b:constructor-arg ref="currencyResolver"/>
+		<property name="paramName" value="currency" />
+		
+	</bean>
+	
+	<bean id="cartResolver" class="be.koozi.cart.CookieCartResolver"/>
+	
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
 		<property name="defaultLocale" value="en" />
+	</bean>
+	
+	<bean id="currencyResolver" class="be.koozi.tools.CookieCurrencyResolver">
+		<property name="defaultCurrency" value="EUR" />
 	</bean>
 
 	<bean id="handlerMapping" class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping">
@@ -123,6 +132,7 @@
 				</bean>
 				-->
 				<ref bean="localeChangeInterceptor" />
+				<ref bean="currencyChangeInterceptor" />
 				<bean class="be.koozi.tools.ViewInterceptor"/>
 				<bean class="be.koozi.tools.BaseInterceptor"/>
 			</list>

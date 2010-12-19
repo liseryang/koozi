@@ -30,13 +30,13 @@ import javax.servlet.http.HttpServletResponse;
 public class FileServlet extends HttpServlet {
 
 	private static final long serialVersionUID = -3384683053196003566L;
-	
+
 	// Constants
 	// ----------------------------------------------------------------------------------
 
 	private static final int DEFAULT_BUFFER_SIZE = 10240; // ..bytes = 10KB.
 	private static final long DEFAULT_EXPIRE_TIME = 604800000L; // ..ms = 1
-																// week.
+	// week.
 	private static final String MULTIPART_BOUNDARY = "MULTIPART_BYTERANGES";
 
 	// Properties
@@ -196,8 +196,8 @@ public class FileServlet extends HttpServlet {
 			// then return 416.
 			if (!range.matches("^bytes=\\d*-\\d*(,\\d*-\\d*)*$")) {
 				response.setHeader("Content-Range", "bytes */" + length); // Required
-																			// in
-																			// 416.
+				// in
+				// 416.
 				response.sendError(HttpServletResponse.SC_REQUESTED_RANGE_NOT_SATISFIABLE);
 				return;
 			}
@@ -209,9 +209,9 @@ public class FileServlet extends HttpServlet {
 			if (ifRange != null && !ifRange.equals(eTag)) {
 				try {
 					long ifRangeTime = request.getDateHeader("If-Range"); // Throws
-																			// IAE
-																			// if
-																			// invalid.
+					// IAE
+					// if
+					// invalid.
 					if (ifRangeTime != -1 && ifRangeTime + 1000 < lastModified) {
 						ranges.add(full);
 					}
@@ -242,8 +242,8 @@ public class FileServlet extends HttpServlet {
 					// return 416.
 					if (start > end) {
 						response.setHeader("Content-Range", "bytes */" + length); // Required
-																					// in
-																					// 416.
+						// in
+						// 416.
 						response.sendError(HttpServletResponse.SC_REQUESTED_RANGE_NOT_SATISFIABLE);
 						return;
 					}

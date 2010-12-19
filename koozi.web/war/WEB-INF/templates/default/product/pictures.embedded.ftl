@@ -1,3 +1,4 @@
+<#setting number_format="0">
 <#if pictureList??>
 	<ul>
 		<#list pictureList as picture>

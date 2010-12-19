@@ -13,13 +13,12 @@ import com.opensymphony.sitemesh.webapp.SiteMeshFilter;
 
 public class ContextSiteMeshFilter extends SiteMeshFilter {
 
-    public void doFilter(ServletRequest rq, ServletResponse rs, FilterChain chain)
-            throws IOException, ServletException {
+	public void doFilter(ServletRequest rq, ServletResponse rs, FilterChain chain) throws IOException, ServletException {
 
-        HttpServletRequest request = (HttpServletRequest) rq;
-        
-        request.setAttribute(RequestConstants.DECORATOR, request.getContextPath()) ;
+		HttpServletRequest request = (HttpServletRequest) rq;
 
-        super.doFilter(rq, rs, chain);
-    }
+		request.setAttribute(RequestConstants.DECORATOR, request.getContextPath());
+
+		super.doFilter(rq, rs, chain);
+	}
 }

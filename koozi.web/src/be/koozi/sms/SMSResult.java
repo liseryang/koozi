@@ -3,21 +3,16 @@ package be.koozi.sms;
 import java.util.Date;
 
 import javax.persistence.Embeddable;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 
 @Embeddable
 public class SMSResult {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//	Long id;
+	// @Id
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	// Long id;
 
-    @Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.STRING)
 	SMSStatusCode statusCode;
 	String statusMessage;
 	String callId;

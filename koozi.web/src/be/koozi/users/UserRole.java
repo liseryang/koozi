@@ -10,8 +10,8 @@ import javax.xml.bind.annotation.XmlType;
 @XmlType
 public class UserRole {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
 
 	Role role;
@@ -45,6 +45,5 @@ public class UserRole {
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-	
-	
+
 }

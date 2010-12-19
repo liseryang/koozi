@@ -14,10 +14,9 @@ import be.koozi.entity.EntityDaoJpaImpl;
 public class PictureDaoJpaImpl extends EntityDaoJpaImpl<Picture, Long> implements PictureDao {
 
 	@Autowired
-	public PictureDaoJpaImpl( JpaTemplate jpaTemplate) {
+	public PictureDaoJpaImpl(JpaTemplate jpaTemplate) {
 		super(Picture.class, jpaTemplate);
 	}
-	
 
 	@Override
 	public Collection<Picture> findByProduct(final Long productId) {

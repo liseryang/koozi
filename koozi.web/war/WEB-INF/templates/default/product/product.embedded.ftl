@@ -1,3 +1,5 @@
+<#setting number_format="0">
+<#setting number_format="0">
 <ul>
 	<li>Code: ${product.code}</li>
 	<li>Collection: ${product.collection}</li>
