@@ -15,6 +15,14 @@ public class CustomFreeMarkerViewResolver extends FreeMarkerViewResolver {
 
 		attrs.setAttribute("base", servletPath, 0);
 
+		String redirectParam = (String) attrs.getRequest().getParameter("redirect");
+		if (redirectParam != null) {
+			View view = super.resolveViewName("redirect:" + redirectParam, locale);
+			if (view != null) {
+				return view;
+			}
+		}
+
 		// add context to redirect
 		if (viewName.contains("redirect:")) {
 			String viewNameRedirect = viewName.substring("redirect:".length());
@@ -76,7 +84,7 @@ public class CustomFreeMarkerViewResolver extends FreeMarkerViewResolver {
 	 * Requires {@link FreeMarkerView}.
 	 */
 	@Override
-	protected Class requiredViewClass() {
+	protected Class<CustomFreeMarkerView> requiredViewClass() {
 		return CustomFreeMarkerView.class;
 	}
 }

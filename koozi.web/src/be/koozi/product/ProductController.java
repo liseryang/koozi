@@ -40,7 +40,7 @@ public class ProductController {
 	}
 
 	@Autowired
-	public ProductController(ProductDao productDao, TagDao productTagDao, PictureDao pictureDao, MetadataDao productMetadataDao, PriceDao priceDao,OptionDao optionDao, UserService userService, CurrencyResolver currencyResolver) {
+	public ProductController(ProductDao productDao, TagDao productTagDao, PictureDao pictureDao, MetadataDao productMetadataDao, PriceDao priceDao, OptionDao optionDao, UserService userService, CurrencyResolver currencyResolver) {
 		this.productDao = productDao;
 		this.tagDao = productTagDao;
 		this.pictureDao = pictureDao;
@@ -54,8 +54,6 @@ public class ProductController {
 
 	@RequestMapping(value = "/products", method = org.springframework.web.bind.annotation.RequestMethod.GET)
 	public String findProducts(HttpServletRequest request, ModelMap model) {
-		LocaleResolver localeResolver = RequestContextUtils.getLocaleResolver(request);
-		Locale locale = localeResolver.resolveLocale(request);
 		Collection<Product> productList = null;
 		productList = productDao.findAll();
 		model.addAttribute("productList", productList);
@@ -215,6 +213,7 @@ public class ProductController {
 			if (all.size() > 0)
 				productMetadata = all.iterator().next();
 		}
+
 		model.addAttribute("metadata", productMetadata);
 		return "product/metadata";
 	}
@@ -252,7 +251,7 @@ public class ProductController {
 		return "redirect:/products/" + productId + "/metadata";
 	}
 
-	//Product prices
+	// Product prices
 	@RolesAllowed("ROLE_ADMIN")
 	@RequestMapping(value = "/products/{productId}/prices", method = org.springframework.web.bind.annotation.RequestMethod.POST)
 	public String createPrice(@PathVariable("productId") Long productId, @RequestParam("amount") BigDecimal amount, @RequestParam("currency") String currency, ModelMap model) {
@@ -299,28 +298,28 @@ public class ProductController {
 	@RolesAllowed("ROLE_ADMIN")
 	@RequestMapping(value = "/products/{productId}/price/{currency}", method = org.springframework.web.bind.annotation.RequestMethod.PUT)
 	public String updatePrice(@PathVariable("currency") String currency, @PathVariable("productId") Long productId, @RequestParam("amount") BigDecimal amount, ModelMap model) {
-		Price productPrice = priceDao.findByProduct(Currency.getInstance(currency), productId);
-		productPrice.setAmount(amount);
-		priceDao.update(productPrice);
-		model.addAttribute("price", productPrice);
-		return "redirect:/products/" + productId + "/prices/" + productPrice.getCurrency();
+		Price price = priceDao.findByProduct(Currency.getInstance(currency), productId);
+		price.setAmount(amount);
+		priceDao.update(price);
+		model.addAttribute("price", price);
+		return "redirect:/products/" + productId + "/prices/" + price.getCurrency();
 
 	}
 
 	@RolesAllowed("ROLE_ADMIN")
 	@RequestMapping(value = "/products/{productId}/prices/{currency}", method = org.springframework.web.bind.annotation.RequestMethod.DELETE)
 	public String deletePrice(@PathVariable("productId") Long productId, @PathVariable("currency") String currency, ModelMap model) {
-		Price productPrice = priceDao.findByProduct(Currency.getInstance(currency), productId);
-		priceDao.delete(productPrice.getId());
+		Price price = priceDao.findByProduct(Currency.getInstance(currency), productId);
+		priceDao.delete(price.getId());
 		return "redirect:/products/" + productId + "/prices";
 	}
-	
-	//Options
+
+	// Options
 
 	@RolesAllowed("ROLE_ADMIN")
 	@RequestMapping(value = "/products/{productId}/options", method = org.springframework.web.bind.annotation.RequestMethod.POST)
-	public String createOption(@PathVariable("productId") Long productId,@RequestParam("stock") int stock, @RequestParam("key") String key, @RequestParam("type") String type, @RequestParam("value") String value, ModelMap model) {
-		Option option = new Option(stock, key, type, value,  productId);
+	public String createOption(@PathVariable("productId") Long productId, @RequestParam("stock") int stock, @RequestParam("key") String key, @RequestParam("type") String type, @RequestParam("value") String value, ModelMap model) {
+		Option option = new Option(stock, key, type, value, productId);
 		optionDao.create(option);
 		return "redirect:/products/" + productId + "/options/" + option.getId();
 	}
@@ -343,11 +342,11 @@ public class ProductController {
 
 	@RolesAllowed("ROLE_ADMIN")
 	@RequestMapping(value = "/products/{productId}/options/{id}", method = org.springframework.web.bind.annotation.RequestMethod.PUT)
-	public String option(@PathVariable("id") long id, @PathVariable("productId") Long productId, @RequestParam("stock") int stock, @RequestParam("key") String key,@RequestParam("value") String value, @RequestParam("type") String type, ModelMap model) {
+	public String option(@PathVariable("id") long id, @PathVariable("productId") Long productId, @RequestParam("stock") int stock, @RequestParam("key") String key, @RequestParam("value") String value, @RequestParam("type") String type, ModelMap model) {
 		Option option = optionDao.find(id);
 		option.setProductId(productId);
 		option.setKey(key);
-		option.setStock(stock);		
+		option.setStock(stock);
 		option.setType(type);
 		option.setValue(value);
 		optionDao.update(option);
@@ -361,5 +360,75 @@ public class ProductController {
 	public String deleteOption(@PathVariable("productId") Long productId, @PathVariable("id") long id, ModelMap model) {
 		optionDao.delete(id);
 		return "redirect:/products/" + productId + "/options";
+	}
+
+	// Product prices
+	@RolesAllowed("ROLE_ADMIN")
+	@RequestMapping(value = "/products/{productId}/options/{optionId}/prices", method = org.springframework.web.bind.annotation.RequestMethod.POST)
+	public String createOptionPrice(@PathVariable("productId") Long productId, @PathVariable("optionId") Long optionId, @RequestParam("amount") BigDecimal amount, @RequestParam("currency") String currency, ModelMap model) {
+		Price price = new Price(amount, Currency.getInstance(currency), optionId, true);
+		priceDao.create(price);
+		return "redirect:/products/" + productId + "/options/" + optionId + "/prices/" + price.getCurrency();
+	}
+
+	@RequestMapping(value = "/products/{productId}/options/{optionId}/prices", method = org.springframework.web.bind.annotation.RequestMethod.GET)
+	public String findOptionPrices(@PathVariable("productId") Long productId, @PathVariable("optionId") Long optionId, ModelMap model) {
+		Collection<Price> priceList = priceDao.findByOption(optionId);
+		model.addAttribute("priceList", priceList);
+		model.addAttribute("productId", productId);
+		model.addAttribute("optionId", optionId);
+		return "product/option.prices";
+	}
+
+	@RequestMapping(value = "/products/{productId}/options/{optionId}/prices/{currency}", method = org.springframework.web.bind.annotation.RequestMethod.GET)
+	public String findOptionPrice(@PathVariable("currency") String currency, @PathVariable("productId") Long productId, @PathVariable("optionId") Long optionId, ModelMap model) {
+		Price price = priceDao.findByOption(Currency.getInstance(currency), optionId);
+
+		if (price == null) {
+			Collection<Price> all = priceDao.findByOption(optionId);
+			if (all.size() > 0)
+				price = all.iterator().next();
+		}
+		model.addAttribute("price", price);
+		model.addAttribute("productId", productId);
+		model.addAttribute("optionId", optionId);
+		return "product/option.price";
+	}
+
+	@RequestMapping(value = "/products/{productId}/options/{optionId}/prices/locale", method = org.springframework.web.bind.annotation.RequestMethod.GET)
+	public String findOptionPrice(HttpServletRequest request, @PathVariable("productId") Long productId, @PathVariable("optionId") Long optionId, ModelMap model) {
+		Currency currency = currencyResolver.resolveCurrency(request);
+		Price price = priceDao.findByProduct(currency, optionId);
+
+		if (price == null) {
+			Collection<Price> all = priceDao.findByOption(optionId);
+			if (all.size() > 0)
+				price = all.iterator().next();
+		}
+		model.addAttribute("price", price);
+		model.addAttribute("productId", productId);
+		model.addAttribute("optionId", optionId);
+		return "product/option.price";
+	}
+
+	@RolesAllowed("ROLE_ADMIN")
+	@RequestMapping(value = "/products/{productId}/options/{optionId}/price/{currency}", method = org.springframework.web.bind.annotation.RequestMethod.PUT)
+	public String updateOptionPrice(@PathVariable("currency") String currency, @PathVariable("optionId") Long optionId, @PathVariable("productId") Long productId, @RequestParam("amount") BigDecimal amount, ModelMap model) {
+		Price price = priceDao.findByProduct(Currency.getInstance(currency), productId);
+		price.setAmount(amount);
+		priceDao.update(price);
+		model.addAttribute("price", price);
+		model.addAttribute("productId", productId);
+		model.addAttribute("optionId", optionId);
+		return "redirect:/products/" + productId + "/options/" + optionId + "/prices/" + price.getCurrency();
+
+	}
+
+	@RolesAllowed("ROLE_ADMIN")
+	@RequestMapping(value = "/products/{productId}/options/{optionId}/prices/{currency}", method = org.springframework.web.bind.annotation.RequestMethod.DELETE)
+	public String deleteOptionPrice(@PathVariable("productId") Long productId, @PathVariable("optionId") Long optionId, @PathVariable("currency") String currency, ModelMap model) {
+		Price price = priceDao.findByProduct(Currency.getInstance(currency), productId);
+		priceDao.delete(price.getId());
+		return "redirect:/products/" + productId + "/options/" + optionId + "/prices";
 	}
 }

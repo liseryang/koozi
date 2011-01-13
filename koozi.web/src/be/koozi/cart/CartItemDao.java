@@ -1,6 +1,5 @@
 package be.koozi.cart;
 
-import java.util.Collection;
 import java.util.List;
 
 import be.koozi.entity.EntityDao;

@@ -19,8 +19,14 @@ public class Price {
 	Long productId;
 
 	Long optionId;
-	
+
 	String currencyCode;
+
+	public Price(BigDecimal amount, Currency currency) {
+		super();
+		this.amount = amount;
+		this.currencyCode = currency.getCurrencyCode();
+	}
 
 	public Price(BigDecimal amount, Currency currency, Long productId) {
 		super();
@@ -29,14 +35,13 @@ public class Price {
 		this.productId = productId;
 	}
 
-
 	public Price(BigDecimal amount, Currency currency, Long optionId, boolean option) {
 		super();
 		this.amount = amount;
 		this.currencyCode = currency.getCurrencyCode();
 		this.optionId = optionId;
 	}
-	
+
 	public BigDecimal getAmount() {
 		return amount;
 	}

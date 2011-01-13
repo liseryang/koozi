@@ -114,6 +114,23 @@ public class EntityDaoJpaImpl<T, ID> implements EntityDao<T, ID> {
 		}, true);
 		return result;
 	}
+	
+//	@Override
+//	public List<T> findAll(final Map<String, Object> params) {
+//		final List<T> result = new LinkedList<T>();
+//
+//		jpaTemplate.execute(new JpaCallback() {
+//			public Object doInJpa(EntityManager em) throws PersistenceException {
+//				Query query = em.createQuery("Select from " + clazz.getName());
+//				List<T> entities = (List<T>) query.getResultList();
+//				for (T entity : entities) {
+//					result.add(entity);
+//				}
+//				return null;
+//			}
+//		}, true);
+//		return result;
+//	}
 
 	protected JpaTemplate getJpaTemplate() {
 		return this.jpaTemplate;

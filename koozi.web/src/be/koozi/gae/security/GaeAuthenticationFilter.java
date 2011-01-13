@@ -32,10 +32,12 @@ public class GaeAuthenticationFilter extends GenericFilterBean {
 
 	private final Logger logger = Logger.getLogger(getClass().getName());
 
+	@SuppressWarnings(value = { "all" })
 	private final AuthenticationDetailsSource ads = new WebAuthenticationDetailsSource();
 	private AuthenticationManager authenticationManager;
 	private AuthenticationFailureHandler failureHandler = new SimpleUrlAuthenticationFailureHandler();
 
+	
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 

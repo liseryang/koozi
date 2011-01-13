@@ -1,6 +1,5 @@
 package be.koozi.product;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +22,13 @@ public class OptionDaoJpaImpl extends EntityDaoJpaImpl<Option, Long> implements 
 	public List<Option> findByProduct(final Long productId) {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("productId", productId);
+		return find(params);
+	}
+
+	@Override
+	public List<Option> findByOption(final Long optionId) {
+		Map<String, Object> params = new HashMap<String, Object>();
+		params.put("optionId", optionId);
 		return find(params);
 	}
 }

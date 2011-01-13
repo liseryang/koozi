@@ -1,7 +1,7 @@
 <#setting number_format="0">
 <#import "/spring.ftl" as spring>
 <#if cartItemList?size != 0  >
-	<div class="cartSummary container">
+	<div class="cartSummary cartSummaryContainer">
 		<div class="cartSummary border">
 			<#if .locale == "en">
 				<#assign cartHeader =  "_en">
@@ -17,12 +17,19 @@
 						${myContext.fetch(base + "/products/" +  cartItem.productId + "/metadata/locale")}
 						<#assign metadata =  myContext.getModelObject("metadata")>
 						<li>
-							<a href="${base}/products/${cartItem.productId}">${metadata.name}</a>
+							<#if metadata != "null">
+								<a href="${base}/products/${cartItem.productId}">${metadata.name}</a>
+							<#else>	
+								${myContext.fetch(base + "/products/" +  cartItem.productId)}
+								<#assign product =  myContext.getModelObject("product")>
+								<a href="${base}/products/${cartItem.productId}">${product.code}</a>
+							</#if>	
+							
 						</li> 
 					</#list>
 				</ul> 
 				<br/>
-				Totaal: <b >13,00€</b><br/><br/>							
+				Totaal: <b ><@include_page path="${base}/cart/myCart/prices/locale" inherit_params=false/> </b><br/><br/>							
 	
 				<div class="cartSummary orderButton">
 					<a class="button normal cartSummary" href="${base}/cart/myCart/cartItems"><@spring.message "cart.order"/></a>

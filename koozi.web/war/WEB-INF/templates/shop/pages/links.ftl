@@ -1,6 +1,6 @@
 <div id="main-wrapper">
-<h1 class="title">Koozi's interessante links!</h1>
-<br> <!--
+<h1 class="title  bottom">Koozi's interessante links!</h1>
+<!--
 <div class="post">
 <h3 class="title">XXX</h3>
 <p><strong>SSS</strong></p>

@@ -42,6 +42,10 @@
 	<context:component-scan base-package="be.koozi.product" />
 	<context:component-scan base-package="be.koozi.users" />
 	<context:component-scan base-package="be.koozi.sms" />
+	<context:component-scan base-package="be.koozi.cart" />
+	<context:component-scan base-package="be.koozi.customer" />
+	<context:component-scan base-package="be.koozi.shipping" />
+	<context:component-scan base-package="be.koozi.payment" />
 
 	<bean class="org.springframework.orm.jdo.LocalPersistenceManagerFactoryBean">
 		<!-- The name of the PMF is in META-INF/jdoconfig.xml -->
@@ -108,11 +112,16 @@
 	</bean>
 	
 	
+	
 	<bean id="currencyChangeInterceptor" class="be.koozi.tools.CurrencyChangeInterceptor">
 		<b:constructor-arg ref="currencyResolver"/>
 		<property name="paramName" value="currency" />
 		
 	</bean>
+	
+	<bean id="cartBean"     class="be.koozi.cart.CartBean" />
+	
+	<bean id="orderBean"     class="be.koozi.order.OrderBean" />
 	
 	<bean id="cartResolver" class="be.koozi.cart.CookieCartResolver"/>
 	
@@ -138,8 +147,16 @@
 			</list>
 		</property>
 	</bean>
-
-
+	<bean id="handlerAdaptor" class="be.koozi.tools.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+	       <list>
+				<bean class="be.koozi.customer.CustomerUrlEncodedMessageConverter"/>
+				<bean class="be.koozi.shipping.ShippingUrlEncodedMessageConverter"/>
+				<bean class="be.koozi.payment.PaymentUrlEncodedMessageConverter"/>
+				<bean class="be.koozi.shipping.KialaShippingUrlEncodedMessageConverter"/>
+	       </list>
+	    </property>
+	</bean>
 
 	<bean id="restTemplate" class="org.springframework.web.client.RestTemplate" />
 
