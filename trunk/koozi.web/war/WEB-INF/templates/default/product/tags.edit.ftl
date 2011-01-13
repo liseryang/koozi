@@ -26,3 +26,15 @@
 			<input type="submit"  value="Add tag"/>
 		</div>
 </form>
+<form action="${base}/products/${productId}/tags" method="post">
+		<div>
+			<input type="hidden" name="value" value="nieuw"/>
+			<input type="submit"  value="Add tag 'nieuw'"/>
+		</div>
+</form>
+<form action="${base}/products/${productId}/tags" method="post">
+		<div>
+			<input type="hidden" name="value" value="promo"/>
+			<input type="submit"  value="Add tag 'promo'"/>
+		</div>
+</form>

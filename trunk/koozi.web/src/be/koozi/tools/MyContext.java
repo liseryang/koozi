@@ -31,17 +31,18 @@ public class MyContext {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		Map<String, Object> localModel = modelResponse.getModel();
-	//	if(localModel == null)
+		// if(localModel == null)
 		this.model.putAll(localModel);
 	}
 
 	public Object getModelObject(String modelName) {
-		if (this.model != null) {
+		if (this.model != null && this.model.get(modelName) != null) {
 			return this.model.get(modelName);
-		} else {
+		} else if (this.request.getAttribute(modelName) != null) {
 			return this.request.getAttribute(modelName);
-		}
+		} else
+			return "null";
 	}
 }

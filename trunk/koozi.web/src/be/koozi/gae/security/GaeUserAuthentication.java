@@ -13,6 +13,7 @@ import be.koozi.users.User;
  * @author Luke Taylor
  */
 public class GaeUserAuthentication implements Authentication {
+	private static final long serialVersionUID = -3064910134369234964L;
 	private final be.koozi.users.User principal;
 	private final Object details;
 	private boolean authenticated;

@@ -1,4 +1,4 @@
-<h1 class="title">Veel gestelde vragen</h1>
+<h1 class="title bottom">Veel gestelde vragen</h1>
 <div class="post hentry">
 <ul>
 <li><a href="#Hoe bestel je via Koozi?" target="_self">Hoe bestel je via Koozi?</a></li>
@@ -16,7 +16,7 @@
 <li><a href="#Hoe laat ik mijn bestelling leveren via Kiala?" target="_self">Hoe laat ik mijn bestelling leveren via Kiala?</a></li>
 <li><a href="#Mogen de producten buiten het ziekenhuis gebruikt worden?" target="_self">Mogen de producten buiten het ziekenhuis gebruikt worden?</a></li>
 </ul>
-<ol> </ol></div>
+</div>
 <div class="post hentry" style="text-align: left;">
 <h3 class="title"><a name="Hoe bestel je via Koozi?"></a>Hoe bestel je via Koozi?</h3>
 <p><span style="font-weight: bold; ">Producten toevoegen aan je winkelwagen</span></p>
@@ -52,12 +52,12 @@
 In stap 2 van de bestelling kan je een keuze maken tussen een overschrijving of betaling met Paypal.                  
 <ul>
 <li>Via een gewone bankoverschrijving op rekening: DB 610 5328550 43</li>
-<li style="margin-bottom: 15px;"><img style="margin:0px; padding:0px; margin-bottom: -10px;" src="../pictures/betalen/paypal_logo.gif" border="0" alt="">Via paypal   <br><br> 
+<li style="margin-bottom: 15px;"><img style="margin:0px; padding:0px; margin-bottom: -10px;" src="/static/shop/images/payment/paypal_logo.gif" border="0" alt="">Via paypal   <br><br> 
 <ul>
 <li style="margin-bottom: 15px;"> Via u paypal rekening. </li>
-<li style="margin-bottom: 15px;"><img style="margin:0px; padding:0px;margin-bottom: -5px;" src="../pictures/betalen/logo_ccMC.gif" border="0" alt=""> Via paypal kan u rechtstreeks met MasterCard betalen.</li>
-<li style="margin-bottom: 15px;"><img style="margin:0px; padding:0px;margin-bottom: -5px;" src="../pictures/betalen/logo_ccVisa.gif" border="0" alt=""> Via paypal kan u rechtstreeks met Visa betalen.</li>
-<li style="margin-bottom: 15px;"><img style="margin:0px; padding:0px;margin-bottom: -5px;" src="../pictures/betalen/logo_ccAmex.gif" border="0" alt=""> Via paypal kan u rechtstreeks met American Expres betalen.</li>
+<li style="margin-bottom: 15px;"><img style="margin:0px; padding:0px;margin-bottom: -5px;" src="/static/shop/images/payment/logo_ccMC.gif" border="0" alt=""> Via paypal kan u rechtstreeks met MasterCard betalen.</li>
+<li style="margin-bottom: 15px;"><img style="margin:0px; padding:0px;margin-bottom: -5px;" src="/static/shop/images/payment/logo_ccVisa.gif" border="0" alt=""> Via paypal kan u rechtstreeks met Visa betalen.</li>
+<li style="margin-bottom: 15px;"><img style="margin:0px; padding:0px;margin-bottom: -5px;" src="/static/shop/images/payment/logo_ccAmex.gif" border="0" alt=""> Via paypal kan u rechtstreeks met American Expres betalen.</li>
 </ul>
 </li>
 </ul>
@@ -81,7 +81,7 @@ In stap 2 van de bestelling kan je een keuze maken tussen een overschrijving of 
 </div>
 <div class="post hentry">
 <h3 class="title"><a name="Hoe betaal ik via paypal?"></a>Hoe betaal ik via paypal?</h3>
-<a style="float: left; margin-right:10px;margin-bottom:10px;" href="http://2.bp.blogspot.com/_xM4JrkfeUWk/SxQ9fJAP8XI/AAAAAAAAAX4/NjHeOIxjDf4/s1600/betalen.JPG"><img src="http://2.bp.blogspot.com/_xM4JrkfeUWk/SxQ9fJAP8XI/AAAAAAAAAX4/NjHeOIxjDf4/s200/betalen.JPG" border="0" alt=""><br>Klik om te vergroten</a> <img style="float: right" src="../pictures/paypal_logo.gif" border="0" alt="">
+<a style="float: left; margin-right:10px;margin-bottom:10px;" href="http://2.bp.blogspot.com/_xM4JrkfeUWk/SxQ9fJAP8XI/AAAAAAAAAX4/NjHeOIxjDf4/s1600/betalen.JPG"><img src="http://2.bp.blogspot.com/_xM4JrkfeUWk/SxQ9fJAP8XI/AAAAAAAAAX4/NjHeOIxjDf4/s200/betalen.JPG" border="0" alt=""><br>Klik om te vergroten</a> <img style="float: right" src="/static/shop/images/payment/paypal_logo.gif" border="0" alt="">
 <p>Als je tijdens het opgeven van je gegevens kiest voor Paypal als betalingswijze word je bij het bevestigen van je gegevens doorgestuurd naar de Paypal betaalpagina.</p>
 <div style="clear:both;"><span style="display:none"> Seperator</span></div>
 <p><strong>Hierbij heb je twee keuzes:</strong></p>
@@ -98,13 +98,13 @@ In stap 2 van de bestelling kan je een keuze maken tussen een overschrijving of 
 </div>
 <div class="post hentry">
 <h3 class="title"><a name="Is betalen op de Koozi website veilig?"></a>Is betalen op de Koozi website veilig?</h3>
-<a title="Betalen via paypal bij Koozi" href="https://www.paypal.com/be/cgi-bin/webscr?cmd=xpt/Marketing/general/Privacy-outside"><img style="float: left" src="../pictures/paypal_logo.gif" border="0" alt=""></a>
+<a title="Betalen via paypal bij Koozi" href="https://www.paypal.com/be/cgi-bin/webscr?cmd=xpt/Marketing/general/Privacy-outside"><img style="float: left" src="/static/shop/images/payment/paypal_logo.gif" border="0" alt=""></a>
 <p>De online betalingen op de Koozi website gaan via de beveiligde server van Paypal door een beveiligde sessie.</p>
 <p><a title="Betalen via paypal bij Koozi" href="https://www.paypal.com/be/cgi-bin/webscr?cmd=xpt/Marketing/general/Privacy-outside">Meer info over de beveiliging van paypal »</a></p>
 </div>
 <div class="post hentry">
 <h3 class="title"><a name="Voor wat staat het keurmerk Beshops?"></a>Voor wat staat het keurmerk Beshops?</h3>
-<a title="Meer info over Beshops" href="http://www.beshops.org/home-consumenten.php"><img style="float: left" src="../pictures/Beshops-keurmerk-(S).gif" border="0" alt=""></a>
+<a title="Meer info over Beshops" href="http://www.beshops.org/home-consumenten.php"><img style="float: left" src="/static/shop/images/misc/Beshops-keurmerk.gif" border="0" alt=""></a>
 <p>Beshops keurt betrouwbare online bedrijven zodat de klant onbezorgd en met vetrouwen aankopen kan doen via het internet.</p>
 <p>Door ons aan te sluiten bij Beshops verplichten we ons zelf om te voldoen aan de <a title="Meer info over Beshops" href="http://www.beshops.org/VOORWAARDEN-BESHOPS.pdf">Beshops gedragscode</a>. Het is voor de klant een garantie voor een correcte afhandeling van zijn bestelling. Beshops is tevens een aanspreekpunt voor de consument voor eventuele klachten over de geleverde service. De gedragscode verbindt Koozi er aan om aan deze klacht op een correcte manier gevolg te geven.</p>
 <p>Kortom, het Beshops keurmerk is uw garantie op een correcte behandeling en een uitstekende klantenservice.</p>

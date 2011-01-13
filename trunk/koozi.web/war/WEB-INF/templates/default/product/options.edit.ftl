@@ -19,6 +19,7 @@
 		<h4>${option.value}</h4>
 		<ul>
 			<li>Stock: ${option.stock}</li>
+			<li>Type: ${option.type}</li>
 		</ul>
 		<form action="${base}/products/${option.productId}/options/${option.id}" method="get">
 			<input type="submit"  value="Edit product option"/>
@@ -35,6 +36,7 @@
 		<select name="type">
 	        <option value="nl">select</option>
 	        <option value="en">input</option>
+	        <option value="en">radio</option>
     	</select>
 	</li>
 	<li>Value: <input name="value" type="input" /></li>
@@ -43,3 +45,5 @@
 </ul>
 	<input type="submit" value="Add option" />
 </form>
+
+<#include "/default/product/options.add.embedded.ftl">

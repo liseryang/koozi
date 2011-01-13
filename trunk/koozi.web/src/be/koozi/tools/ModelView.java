@@ -25,6 +25,7 @@ public class ModelView extends FreeMarkerView {
 
 	private ServletContextHashModel servletContextHashModel;
 
+	@SuppressWarnings(value = { "all" })
 	public void render(Map<String, ?> model, HttpServletRequest request, HttpServletResponse response) throws Exception {
 		prepareResponse(request, response);
 		renderMergedOutputModel((Map<String, Object>) model, request, response);

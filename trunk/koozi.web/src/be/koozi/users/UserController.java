@@ -32,8 +32,6 @@ public class UserController {
 	private UserRoleDao userRoleDao;
 	private UserService userService;
 
-	private final static String ADMIN = "tola2000@gmail.com";
-
 	public UserController() {
 	}
 

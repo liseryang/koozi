@@ -6,14 +6,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class OptionBean {
-	public static HashMap<String, List<Option>> getOptionMap(List<Option> options)
-	{
+	public static HashMap<String, List<Option>> getOptionMap(List<Option> options) {
 		HashMap<String, List<Option>> optionMap = new HashMap<String, List<Option>>();
-		for (Iterator iterator = options.iterator(); iterator.hasNext();) {
-			Option option = (Option) iterator.next();
+		for (Iterator<Option> iterator = options.iterator(); iterator.hasNext();) {
+			Option option = iterator.next();
 			List<Option> optionList = optionMap.get(option.getKey());
-			if(optionList == null)
-			{
+			if (optionList == null) {
 				optionList = new LinkedList<Option>();
 				optionMap.put(option.getKey(), optionList);
 			}

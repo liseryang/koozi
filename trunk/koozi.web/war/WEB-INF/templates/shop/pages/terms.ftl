@@ -1,4 +1,4 @@
-<h1 class="title">Algemene voorwaarden voor internet verkoop</h1>
+<h1 class="title bottom">Algemene voorwaarden voor internet verkoop</h1>
 <div class="post hentry">
 <ul>
 <li><a href="#Artikel 1" target="_self">Artikel 1: identificatie van de verkoper</a></li>

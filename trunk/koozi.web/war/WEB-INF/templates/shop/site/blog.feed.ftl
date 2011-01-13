@@ -1,6 +1,5 @@
-<div id="productItemContainer">
-	<div class="innerPanel" id="productItemBorder" name="productItemBorder">
-		<div id="productItem">
+<div class="container" >
+	<div class="containerBorder" >
 			 <!-- ++Begin Dynamic Feed Wizard Generated Code++ -->
 			  <!--
 			  // Created with a Google AJAX Search and Feed Wizard
@@ -53,7 +52,6 @@
 					<!-- AddThis Button END -->
 				</div>
 				<div style="clear:both"></div>
-			</div>
 		</div>
 	</div>
 </div>

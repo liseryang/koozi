@@ -69,6 +69,5 @@ public class Option {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
-	
+
 }
