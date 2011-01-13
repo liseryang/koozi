@@ -22,7 +22,7 @@ public class SMSDaoJpaImpl extends EntityDaoJpaImpl<SMS, Long> implements SMSDao
 	public List<SMS> findByUserId(String userId) {
 		Map<String, Object> params = new HashMap<String, Object>();
 		params.put("userId", userId);
-		return find(params);
+		return find(params, "timestamp ASC");
 	}
 
 }
