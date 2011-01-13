@@ -31,15 +31,17 @@ public class UserController {
 	private UserDao userDao;
 	private UserRoleDao userRoleDao;
 	private UserService userService;
+	private InitialUser initialUser;
 
 	public UserController() {
 	}
 
 	@Autowired
-	public UserController(UserDao userDao, UserRoleDao userRoleDao, UserService userService) {
+	public UserController(UserDao userDao, UserRoleDao userRoleDao, UserService userService, InitialUser initialUser) {
 		this.userDao = userDao;
 		this.userRoleDao = userRoleDao;
 		this.userService = userService;
+		this.initialUser = initialUser;
 	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
@@ -131,7 +133,7 @@ public class UserController {
 
 		userDao.create(user);
 
-		if (user.getNickname().equalsIgnoreCase("Tola2000")) {
+		if (user.getNickname().equalsIgnoreCase(initialUser.getNickName())) {
 			UserRole userRole = new UserRole(Role.ROLE_ADMIN, user.getUserId());
 			userRoleDao.create(userRole);
 		}
