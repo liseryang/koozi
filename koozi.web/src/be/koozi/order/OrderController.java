@@ -1,5 +1,6 @@
 package be.koozi.order;
 
+import java.math.BigDecimal;
 import java.util.Currency;
 import java.util.List;
 
@@ -7,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -37,6 +40,9 @@ public class OrderController {
 	private PaymentDao paymentDao;
 	private KialaShippingDao kialaShippingDao;
 
+	public OrderController()
+	{}
+	
 	@Autowired
 	public OrderController(PaymentDao paymentDao, ShippingDao shippingDao, OrderBean orderBean, CurrencyResolver currencyResolver, OrderDao orderDao, CartResolver cartResolver, OrderItemDao orderItemDao, OrderItemOptionValueDao orderItemOptionValueDao, CustomerDao customerDao,
 			KialaShippingDao kialaShippingDao) {
@@ -95,6 +101,7 @@ public class OrderController {
 		return "/order/shipping";
 	}
 
+	@Transactional( propagation = Propagation.REQUIRES_NEW)
 	@RequestMapping(value = "/orders/{orderId}/payment", method = org.springframework.web.bind.annotation.RequestMethod.PUT)
 	public String updatePayment(HttpServletRequest request, @PathVariable("orderId") String orderId, @RequestBody Payment payment, ModelMap model) {
 		List<Payment> shippingList = paymentDao.findByOrder(orderId);
@@ -116,12 +123,13 @@ public class OrderController {
 		return "/order/customer";
 	}
 
+	@Transactional( propagation = Propagation.REQUIRES_NEW)
 	@RequestMapping(value = "/orders/{orderId}/customer", method = org.springframework.web.bind.annotation.RequestMethod.PUT)
 	public String updateCustomer(HttpServletRequest request, @PathVariable("orderId") String orderId, @RequestBody Customer customer, ModelMap model) {
 		List<Customer> customerList = customerDao.findByOrder(orderId);
 		if (customerList.size() != 0)
 			customer.setId(customerList.get(0).getId());
-		if(customer.getId() == 0L)
+		if (customer.getId() == 0L)
 			customer.setId(null);
 		customer.setOrderId(orderId);
 		customerDao.update(customer);
@@ -139,6 +147,7 @@ public class OrderController {
 		return "/order/shipping";
 	}
 
+	@Transactional( propagation = Propagation.REQUIRES_NEW)
 	@RequestMapping(value = "/orders/{orderId}/shipping/default", method = org.springframework.web.bind.annotation.RequestMethod.PUT)
 	public String updateShipping(HttpServletRequest request, @PathVariable("orderId") String orderId, @RequestBody Shipping shipping, ModelMap model) {
 		List<Shipping> shippingList = shippingDao.findByOrder(orderId);
@@ -169,26 +178,16 @@ public class OrderController {
 		kialaShippingDao.update(kialaShipping);
 		return "redirect:/orders/" + orderId + "/shipping/kiala";
 	}
+
 	
 	@RequestMapping(value = "/orders/{orderId}/shipping/kiala/postBack", method = org.springframework.web.bind.annotation.RequestMethod.GET)
-	public String postBackKialaShipping(HttpServletRequest request, @PathVariable("orderId") String orderId, @RequestParam("kpname") String name, ModelMap model) {
-		KialaShipping kialaShipping = new KialaShipping();
-		List<KialaShipping> shippingList = kialaShippingDao.findByOrder(orderId);
-		if (shippingList.size() != 0)
-			kialaShipping = shippingList.get(0);
-			
-		kialaShipping.setOrderId(orderId);
-		kialaShipping.setName(name);
-		kialaShippingDao.update(kialaShipping);
+	public String postBackKialaShipping(HttpServletRequest request, @PathVariable("orderId") String orderId, @RequestParam("kpname") String name, @RequestParam("zip") String postCode, @RequestParam("shortkpid") String shortCode, @RequestParam("street") String street,
+			@RequestParam("locationhint") String hint, @RequestParam("city") String city, @RequestParam("openinghours") String openingHours, ModelMap model) {
+		orderBean.updateOrder(orderId, "kiala", null);
+		orderBean.updateShipping(orderId, name, postCode, shortCode, street, hint, city, openingHours);
+		
 		return "redirect:/orders/" + orderId + "/shipping/kiala";
 	}
 }
-
-//locationhint%3DGelegen%2Baan%2BDen%2BBlauwen%2BHoek%26
-//street%3DBrusselsestraat%252C%2B139%26
-//openinghours%3DMON.0800.2000-TUE.0800.2000-WED.0800.2000-THU.0800.2000-FRI.0800.2000-SAT.0800.1900-%26shortkpid%3D0805%26
-//kpname%3DSUPERMARKET%2BEXOTIC%2BWORLD%26
-//zip%3D3000%26
-//city%3DLeuven
-//shortkpid%3D0829
+// openinghours%3DMON.0800.2000-TUE.0800.2000-WED.0800.2000-THU.0800.2000-FRI.0800.2000-SAT.0800.1900-%26shortkpid%3D0805%26
 

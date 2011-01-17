@@ -13,11 +13,45 @@ public class KialaShipping {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Long id;
+	
+	String shortCode;
 
 	String orderId;
 	
 	String name;
 	
+	String street;
+	
+	String city;
+	
+	String hint;
+	
+	String postCode;
+	
+	public String getHint() {
+		return hint;
+	}
+
+	public void setHint(String hint) {
+		this.hint = hint;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getStreet() {
+		return street;
+	}
+
+	public void setStreet(String street) {
+		this.street = street;
+	}
+
 	public String getName() {
 		return name;
 	}
@@ -33,8 +67,6 @@ public class KialaShipping {
 	public void setPostCode(String postCode) {
 		this.postCode = postCode;
 	}
-
-	String postCode;
 
 	public String getOrderId() {
 		return orderId;
@@ -52,4 +84,11 @@ public class KialaShipping {
 		return id;
 	}
 
+	public String getShortCode() {
+		return shortCode;
+	}
+
+	public void setShortCode(String shortCode) {
+		this.shortCode = shortCode;
+	}
 }

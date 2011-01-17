@@ -52,6 +52,11 @@
 
 	<servlet-mapping>
 		<servlet-name>dispatch</servlet-name>
+		<url-pattern>/shop/nl/*</url-pattern>
+	</servlet-mapping>
+	
+	<servlet-mapping>
+		<servlet-name>dispatch</servlet-name>
 		<url-pattern>/shop/*</url-pattern>
 	</servlet-mapping>
 
@@ -74,8 +79,6 @@
 		<filter-name>HiddenHttpMethodFilter</filter-name>
 		<servlet-name>dispatch</servlet-name>
 	</filter-mapping>
-
-	
 
 	<servlet>
 		<servlet-name>fileServlet</servlet-name>

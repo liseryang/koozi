@@ -18,6 +18,7 @@ public class OrderItem {
 	@Embedded
 	@OneToOne(cascade = CascadeType.ALL)
 	Value price;
+	
 	Long productId;
 	String orderId;
 	Long amount;
@@ -31,10 +32,6 @@ public class OrderItem {
 
 	public Long getProductId() {
 		return productId;
-	}
-
-	public String getCartId() {
-		return orderId;
 	}
 
 	public Long getAmount() {

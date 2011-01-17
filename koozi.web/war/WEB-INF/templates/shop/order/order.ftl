@@ -11,11 +11,19 @@ ${myContext.fetch(base + "/orders/" + order.id + "/orderItems/")}
 	<@include_page path="${base}/orders/" + order.id + "/customer" inherit_params=true  params={"view": "embedded"}/>
 	<@include_page path="${base}/orders/" + order.id + "/shipping" inherit_params=true params={"view": "embedded"}/>
 	
-	
 	<#if RequestParameters["showItems"]??>
-		<#list orderItemList as orderItem>
-			<#include "${base}/order/orderItem.embedded.ftl"/>
-		</#list>	
+		<div class="container">
+			<div class="containerBorder">
+				<h3 class="title top"><@spring.message "order.products"/></h3> 
+				<div class="containerSeperator top"></div>
+				<#list orderItemList as orderItem>
+					<#include "${base}/order/orderItem.embedded.ftl"/>
+					<#if orderItem_has_next>
+						<div class="containerSeperator"></div>
+					</#if>
+				</#list>
+			</div>
+		</div>	
 	</#if>	
 	
 	<div class="container">

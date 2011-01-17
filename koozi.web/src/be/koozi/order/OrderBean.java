@@ -8,6 +8,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import be.koozi.cart.Cart;
 import be.koozi.cart.CartBean;
@@ -18,6 +20,8 @@ import be.koozi.cart.OptionValue;
 import be.koozi.cart.OptionValueDao;
 import be.koozi.product.Price;
 import be.koozi.product.PriceDao;
+import be.koozi.shipping.KialaShipping;
+import be.koozi.shipping.KialaShippingDao;
 
 public class OrderBean {
 
@@ -30,9 +34,12 @@ public class OrderBean {
 	PriceDao priceDao;
 	CartBean cartBean;
 	OrderItemOptionValueDao orderItemOptionValueDao;
+	KialaShippingDao kialaShippingDao;
 
+	public OrderBean(){}
+			
 	@Autowired
-	public OrderBean(OrderItemOptionValueDao orderItemOptionValueDao, CartBean cartBean, OrderItemDao orderItemDao, OrderDao orderDao, CartDao cartDao, CartItemDao cartItemDao, OptionValueDao optionValueDao, PriceDao priceDao) {
+	public OrderBean(OrderItemOptionValueDao orderItemOptionValueDao, CartBean cartBean, OrderItemDao orderItemDao, OrderDao orderDao, CartDao cartDao, CartItemDao cartItemDao, OptionValueDao optionValueDao, PriceDao priceDao, KialaShippingDao kialaShippingDao) {
 		super();
 		this.orderItemDao = orderItemDao;
 		this.orderDao = orderDao;
@@ -42,6 +49,7 @@ public class OrderBean {
 		this.priceDao = priceDao;
 		this.cartBean = cartBean;
 		this.orderItemOptionValueDao = orderItemOptionValueDao;
+		this.kialaShippingDao = kialaShippingDao;
 	}
 
 	public Order createOrder(String cartId, Currency currency) {
@@ -50,8 +58,12 @@ public class OrderBean {
 		Cart cart = new Cart(cartId);
 		List<CartItem> cartItems = cartItemDao.findByCart(cartId);
 
-		String orderId = getNewOrderId();
-
+		Order order = new Order(getNewOrderId());
+		Value orderPrice = new Value(total, currency);
+		order.setPrice(orderPrice);
+		//order.setShippingMethod("test");
+		orderDao.create(order);
+		
 		for (Iterator<CartItem> iterator = cartItems.iterator(); iterator.hasNext();) {
 			CartItem cartItem = iterator.next();
 			Price productPrice = cartBean.getPrice(cart, currency);
@@ -61,7 +73,7 @@ public class OrderBean {
 				total = total.add(amountProduct);
 				orderItemPrice = new Value(productPrice);
 			}
-			OrderItem orderItem = new OrderItem(cartItem.getProductId(), orderId, cartItem.getAmount(), orderItemPrice);
+			OrderItem orderItem = new OrderItem(cartItem.getProductId(), order.getId(), cartItem.getAmount(), orderItemPrice);
 			orderItemDao.create(orderItem);
 
 			List<OptionValue> optionValues = optionValueDao.findByCartItem(cartItem.getId());
@@ -78,11 +90,41 @@ public class OrderBean {
 				orderItemOptionValueDao.create(orderItemOptionValue);
 			}
 		}
-		Order order = new Order(orderId);
-		Value orderPrice = new Value(total, currency);
-		order.setPrice(orderPrice);
-		orderDao.create(order);
+
 		return order;
+	}
+	
+	@Transactional( propagation = Propagation.REQUIRES_NEW)
+	public void updateOrder(String orderId, String shippingMethod, String paymentMethod)
+	{
+		Order updateOrder = orderDao.find(orderId);
+		if(paymentMethod != null)
+			updateOrder.setPaymentMethod(paymentMethod);
+		if(shippingMethod != null)
+			updateOrder.setShippingMethod(shippingMethod);
+		orderDao.update(updateOrder);
+	}
+	
+	@Transactional( propagation = Propagation.REQUIRES_NEW)
+	public void updateShipping(String orderId,String name, String postCode,String shortCode, String street,
+			String hint,String city, String openingHours)
+	{
+		KialaShipping kialaShipping = new KialaShipping();
+
+		List<KialaShipping> shippingList = kialaShippingDao.findByOrder(orderId.toString());
+		if (shippingList.size() != 0)
+			kialaShipping = shippingList.get(0);
+		else
+			kialaShipping.setOrderId(orderId);
+
+		kialaShipping.setName(name);
+		kialaShipping.setCity(city);
+		kialaShipping.setPostCode(postCode);
+		kialaShipping.setShortCode(shortCode);
+		kialaShipping.setStreet(street);
+		kialaShipping.setHint(hint);
+		kialaShippingDao.update(kialaShipping);
+
 	}
 
 	public String getNewOrderId() {
