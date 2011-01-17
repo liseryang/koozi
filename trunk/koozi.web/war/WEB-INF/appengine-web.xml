@@ -9,10 +9,10 @@
 		<property name="java.util.logging.config.file" value="WEB-INF/logging.properties" />
 	</system-properties>
 	<public-root>"/static"</public-root>
-<!-- 	
+ 	
 	<static-files>
 		<include path="/favicon.ico" expiration="1d" />
 		<include path="/static/**" />
 		<include path="/**.css" />
-	</static-files> -->
+	</static-files> 
 </appengine-web-app>

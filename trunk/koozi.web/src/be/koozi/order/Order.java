@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.CascadeType;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
@@ -18,6 +19,10 @@ public class Order {
 	String shippingMethod;
 
 	String paymentMethod;
+	
+	@OneToOne(fetch = FetchType.EAGER)
+	@Embedded
+	Value price;
 	
 	public String getShippingMethod() {
 		return shippingMethod;
@@ -34,10 +39,6 @@ public class Order {
 	public void setPaymentMethod(String paymentMethod) {
 		this.paymentMethod = paymentMethod;
 	}
-
-	@Embedded
-	@OneToOne(cascade = CascadeType.ALL)
-	Value price;
 
 	public Date getTimestamp() {
 		return timestamp;

@@ -4,11 +4,18 @@
 
 <#include "${base}/cart/cart.tip.ftl"/>
 
-<div class="containerList">
-	<#list cartItemList as cartItem>
-		<#include "${base}/cart/cartItem.embedded.ftl"/>
-	</#list>	
-</div>
+	<div class="container">
+		<div class="containerBorder">
+			<h3 class="title top"><@spring.message "order.products"/></h3> 
+			<div class="containerSeperator top"></div>
+			<#list cartItemList as cartItem>
+				<#include "${base}/cart/cartItem.embedded.ftl"/>
+				<#if cartItem_has_next>
+					<div class="containerSeperator"></div>
+				</#if>
+			</#list>
+		</div>
+	</div>	
 <div style="float:right; padding-top:10px; padding-bottom:10px;">
 		<select onchange="javascript: window.location = this.value ; ">
 		   <option value="${base}/catalogues/muts"><@spring.message "catalogue.name.muts"/></option>

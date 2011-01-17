@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -75,6 +77,7 @@ public class ProductController {
 	}
 
 	@RolesAllowed("ROLE_ADMIN")
+	@Transactional( propagation = Propagation.REQUIRES_NEW)
 	@RequestMapping(value = "/products/{productId}", method = org.springframework.web.bind.annotation.RequestMethod.PUT)
 	public String updateProduct(@PathVariable("productId") Long id, @RequestParam("code") String code, @RequestParam("collection") String collection, @RequestParam("thumbnail") String thumbnail, ModelMap model) {
 		Product product = productDao.find(id);
@@ -170,6 +173,7 @@ public class ProductController {
 	}
 
 	@RolesAllowed("ROLE_ADMIN")
+	@Transactional( propagation = Propagation.REQUIRES_NEW)
 	@RequestMapping(value = "/products/{productId}/pictures/{pictureId}", method = org.springframework.web.bind.annotation.RequestMethod.PUT)
 	public String updatePicture(@PathVariable("productId") Long productId, @PathVariable("pictureId") long pictureId, @RequestParam("href") String href, ModelMap model) {
 		Picture picture = pictureDao.find(pictureId);
@@ -232,6 +236,7 @@ public class ProductController {
 	}
 
 	@RolesAllowed("ROLE_ADMIN")
+	@Transactional( propagation = Propagation.REQUIRES_NEW)
 	@RequestMapping(value = "/products/{productId}/metadata/{locale}", method = org.springframework.web.bind.annotation.RequestMethod.PUT)
 	public String updateProductMetadata(@PathVariable("locale") String locale, @PathVariable("productId") Long productId, @RequestParam("name") String name, @RequestParam("description") String description, ModelMap model) {
 		Metadata productMetadata = metadataDao.findByProduct(locale, productId);

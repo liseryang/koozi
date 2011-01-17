@@ -43,8 +43,8 @@
 						</div>
 					</div>
 					<div class="end"></div>	
-					
-					<h3 class="title"><@spring.message "customer.address.title"/></h3>
+					<div class="containerSeperator"></div>
+					<h3 class="title  top"><@spring.message "customer.address.title"/></h3>
 					
 					<div class="row">
 						<div id="streetNameField" class="field" >
@@ -79,7 +79,9 @@
 					</div>
 						
 					<div class="end"></div>	
-					<h3 class="title"><@spring.message "customer.company.title"/></h3>
+					<div class="containerSeperator"></div>
+					
+					<h3 class="title top"><@spring.message "customer.company.title"/></h3>
 					<div class="row">
 						<div id="companyNameField" class="field" >
 							<label for="companyName"><@spring.message "customer.companyName"/></label>

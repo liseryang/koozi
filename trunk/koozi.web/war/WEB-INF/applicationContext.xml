@@ -119,6 +119,10 @@
 		
 	</bean>
 	
+	<bean id="initialUser" class="be.koozi.users.InitialUser">
+		<b:constructor-arg value="tola2000"/>
+	</bean>
+	
 	<bean id="cartBean"     class="be.koozi.cart.CartBean" />
 	
 	<bean id="orderBean"     class="be.koozi.order.OrderBean" />
@@ -162,7 +166,7 @@
 
 	<bean class="com.google.appengine.api.images.ImagesServiceFactory" factory-method="getImagesService" />
 
-	<bean class="be.koozi.sms.SMSServiceOrangeImpl" />
+	<bean class="be.koozi.sms.SMSServiceTestImpl" />
 
 	<bean class="com.google.appengine.api.users.UserServiceFactory" factory-method="getUserService" />
 

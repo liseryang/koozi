@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -112,6 +114,7 @@ public class CartController {
 	}
 
 	// Cart is shortuct to the own shoppingcart from the cookie.
+	@Transactional( propagation = Propagation.REQUIRES_NEW)
 	@RequestMapping(value = "/cart/myCart/cartItems/{id}", method = org.springframework.web.bind.annotation.RequestMethod.PUT)
 	public String updateCartItem(ModelMap model, @PathVariable("id") Long id, @RequestParam(value = "amount", required = false) Long amount) {
 		CartItem cartItem = cartItemDao.find(id);

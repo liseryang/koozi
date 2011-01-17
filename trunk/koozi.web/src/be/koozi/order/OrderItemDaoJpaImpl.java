@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.jpa.JpaTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 import be.koozi.entity.EntityDaoJpaImpl;
 
 @Repository

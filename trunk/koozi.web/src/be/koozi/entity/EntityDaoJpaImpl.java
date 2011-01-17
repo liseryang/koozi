@@ -37,12 +37,12 @@ public class EntityDaoJpaImpl<T, ID> implements EntityDao<T, ID> {
 
 	@Override
 	public void update(T entity) {
-		entity = jpaTemplate.merge(entity);
-		// jpaTemplate.persist(entity);
+		T entity2 = jpaTemplate.merge(entity);
+	//    jpaTemplate.persist(entity);
 	}
 
 	@Override
-	public T find(final Object entityId) {
+	public T find(final ID entityId) {
 		return jpaTemplate.find(clazz, entityId);
 		// jpaTemplate.execute(new JpaCallback() {
 		// public Object doInJpa(EntityManager em) throws PersistenceException {
@@ -65,6 +65,13 @@ public class EntityDaoJpaImpl<T, ID> implements EntityDao<T, ID> {
 
 	@Override
 	public List<T> find(final Map<String, Object> params) {
+		return find(params, null, 0, 0);
+	}
+
+	
+	
+	@Override
+	public List<T> find(final Map<String, Object> params, String orderBy, final Integer limit, final Integer offset) {
 		final StringBuffer queryStr = new StringBuffer();
 		queryStr.append("select from ").append(clazz.getName()).append(" where ");
 		boolean first = true;
@@ -77,7 +84,12 @@ public class EntityDaoJpaImpl<T, ID> implements EntityDao<T, ID> {
 			queryStr.append(type).append("= :").append(type);
 			first = false;
 		}
-
+		
+		if(orderBy != null && !orderBy.equals(""))
+		{
+			queryStr.append(" ORDER BY ").append(orderBy);
+		}
+		
 		final List<T> result = new LinkedList<T>();
 
 		jpaTemplate.execute(new JpaCallback() {
@@ -86,6 +98,9 @@ public class EntityDaoJpaImpl<T, ID> implements EntityDao<T, ID> {
 				for (Iterator<Map.Entry<String, Object>> iterator = params.entrySet().iterator(); iterator.hasNext();) {
 					Map.Entry<String, ?> entry = iterator.next();
 					query.setParameter(entry.getKey(), entry.getValue());
+					if(limit > 0)
+						query.setMaxResults(limit);
+					query.setFirstResult(offset);	
 				}
 
 				List<T> entities = (List<T>) query.getResultList();
@@ -114,23 +129,6 @@ public class EntityDaoJpaImpl<T, ID> implements EntityDao<T, ID> {
 		}, true);
 		return result;
 	}
-	
-//	@Override
-//	public List<T> findAll(final Map<String, Object> params) {
-//		final List<T> result = new LinkedList<T>();
-//
-//		jpaTemplate.execute(new JpaCallback() {
-//			public Object doInJpa(EntityManager em) throws PersistenceException {
-//				Query query = em.createQuery("Select from " + clazz.getName());
-//				List<T> entities = (List<T>) query.getResultList();
-//				for (T entity : entities) {
-//					result.add(entity);
-//				}
-//				return null;
-//			}
-//		}, true);
-//		return result;
-//	}
 
 	protected JpaTemplate getJpaTemplate() {
 		return this.jpaTemplate;

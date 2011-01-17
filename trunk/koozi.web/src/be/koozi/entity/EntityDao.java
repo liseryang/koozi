@@ -15,4 +15,6 @@ public interface EntityDao<T, ID> {
 	List<T> findAll();
 
 	List<T> find(Map<String, Object> params);
+	
+	List<T> find(Map<String, Object> params, String orderBy, Integer limit, Integer offset);
 }
