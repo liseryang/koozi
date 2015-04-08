@@ -1,0 +1,1 @@
+Rest webshop build on top of Spring MVC and deployable on GAE
